@@ -15,7 +15,7 @@
     <div class="container" id="container">
 
         <div class="form-container sign-in-container">
-            @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+            @using (Html.BeginForm("Login", "Security", FormMethod.Post, new { data_ajax = "false" }))
             {
                 @Html.ValidationSummary()             
                 <form action="#">
@@ -24,7 +24,7 @@
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adı", required = "required" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Şifre giriniz", required = "required" })
                     <a>Şifremi Unuttum</a>
-                    <button>Giriş Yap</button>
+                    <button type="submit">Giriş Yap</button>
                 </form>
             }
         </div>

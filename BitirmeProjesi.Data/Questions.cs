@@ -21,7 +21,7 @@ namespace BitirmeProjesi.Data
         public Nullable<long> VetId { get; set; }
         public Nullable<decimal> RatingScore { get; set; }
     
-        public virtual User User { get; set; }
-        public virtual VetUser VetUser { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual VetUsers VetUsers { get; set; }
     }
 }

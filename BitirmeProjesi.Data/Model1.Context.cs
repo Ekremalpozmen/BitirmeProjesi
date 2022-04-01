@@ -30,7 +30,7 @@ namespace BitirmeProjesi.Data
         public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<VetUser> VetUser { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<VetUsers> VetUsers { get; set; }
     }
 }
