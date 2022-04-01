@@ -2,9 +2,29 @@
 <form action="#">
     <h1>Hesap Oluştur</h1>
     <br />
-    <input type="text" placeholder="Kullanıcı Adı" />
+    <input type="text" pattern="[a-z]*" placeholder="Kullanıcı Adı" />
     <input type="email" placeholder="E-mail" />
     <input type="password" placeholder="Şifre" />
     <input type="password" placeholder="Şifre Tekrar" />
+    <br />
     <button>Kayıt Ol</button>
 </form>
+<style>
+    input:invalid {
+        animation: shake 300ms;
+    }
+
+    @@keyframes shake {
+        25% {
+            transform: translateX(4px);
+        }
+
+        50% {
+            transform: translateX(-4px);
+        }
+
+        75% {
+            transform: translateX(4px);
+        }
+    }
+</style>
