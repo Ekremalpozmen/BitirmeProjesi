@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitirmeProjesi", "BitirmeProjesi\BitirmeProjesi.csproj", "{9E6EB5D6-011C-4601-B82C-B8DDC13568C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitirmeProjesi.ViewModels", "BitirmeProjesi.ViewModels\BitirmeProjesi.ViewModels.csproj", "{C2798B84-52A7-4FBC-AC09-A6AF930784A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitirmeProjesi.Data", "BitirmeProjesi.Data\BitirmeProjesi.Data.csproj", "{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9E6EB5D6-011C-4601-B82C-B8DDC13568C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E6EB5D6-011C-4601-B82C-B8DDC13568C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E6EB5D6-011C-4601-B82C-B8DDC13568C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2798B84-52A7-4FBC-AC09-A6AF930784A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2798B84-52A7-4FBC-AC09-A6AF930784A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2798B84-52A7-4FBC-AC09-A6AF930784A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2798B84-52A7-4FBC-AC09-A6AF930784A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

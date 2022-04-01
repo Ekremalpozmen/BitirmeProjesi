@@ -1,4 +1,4 @@
-﻿
+﻿@model BitirmeProjesi.ViewModels.User.Security.LoginViewModel
 @{
     Layout = null;
 }
@@ -13,16 +13,24 @@
 <body>
 
     <div class="container" id="container">
+
         <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Giriş Yap</h1>
-                <br />
-                <input type="email" placeholder="Kullanıcı Adı" />
-                <input type="password" placeholder="Şifre" />
-                <a>Şifremi Unuttum</a>
-                <button>Giriş Yap</button>
-            </form>
+            @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+            {
+                @Html.ValidationSummary()             
+                <form action="#">
+                    <h1>Giriş Yap</h1>
+                    <br />
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adı", required = "required" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Şifre giriniz", required = "required" })
+                    <a>Şifremi Unuttum</a>
+                    <button>Giriş Yap</button>
+                </form>
+            }
         </div>
+
+
+
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
