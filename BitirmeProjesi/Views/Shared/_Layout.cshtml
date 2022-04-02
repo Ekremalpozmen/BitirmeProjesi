@@ -1,42 +1,196 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <title>Bitirme Projesi</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- STYLE CSS -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/dark-style.css" rel="stylesheet" />
+    <link href="~/assets/css/transparent-style.css" rel="stylesheet">
+    <link href="~/assets/css/skin-modes.css" rel="stylesheet" />
+    <!--- FONT-ICONS CSS -->
+    <link href="~/assets/css/icons.css" rel="stylesheet" />
+
+    <!-- COLOR SKIN CSS -->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="~/assets/colors/color1.css" />
 </head>
-<body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+ 
+<body class="app sidebar-mini ltr">
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+            <!-- app-Header -->
+            <div class="app-header header sticky">
+                <div class="container-fluid main-container">
+                    <div class="d-flex">
+                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
+                        <!-- sidebar-toggle-->
+                        <a class="logo-horizontal " href="index.html">
+                            <img src="../assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
+                            <img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
+                        </a>
+                       
+                        <div class="d-flex order-lg-2 ms-auto header-right-icons">
+                            <div class="dropdown d-none">
+                                <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
+                                    <i class="fe fe-search"></i>
+                                </a>
+                                <div class="dropdown-menu header-search dropdown-menu-start">
+                                    <div class="input-group w-100 p-2">
+                                        <input type="text" class="form-control" placeholder="Search....">
+                                         
+                                        <div class="input-group-text btn btn-primary">
+                                            <i class="fe fe-search" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="navbar navbar-collapse responsive-navbar p-0">
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                                    <div class="d-flex order-lg-2">
+                                        <div class="dropdown d-lg-none d-flex">
+                                            <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
+                                                <i class="fe fe-search"></i>
+                                            </a>
+                                            <div class="dropdown-menu header-search dropdown-menu-start">
+                                                <div class="input-group w-100 p-2">
+                                                    <input type="text" class="form-control" placeholder="Search....">
+                                                    <div class="input-group-text btn btn-primary">
+                                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="dropdown d-flex">
+                                            <a class="nav-link icon full-screen-link nav-link-bg">
+                                                <i class="fe fe-minimize fullscreen-button"></i>
+                                            </a>
+                                        </div>
+                                        <!-- FULL-SCREEN -->
+                                        <div class="dropdown d-flex profile-1">
+                                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
+                                                <i class="bi bi-person-circle  profile-user brround cover-image" aria-hidden="true"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <div class="drop-heading">
+                                                    <div class="text-center">
+                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold">İsim Soyisim</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown-divider m-0"></div>
+                                                <a class="dropdown-item" href="profile.html">
+                                                    <i class="dropdown-icon fe fe-user"></i> Profil
+                                                </a>
+                                                <a class="dropdown-item" href="login.html">
+                                                    <i class="dropdown-icon fe fe-alert-circle"></i> Çıkış Yap
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <!-- /app-Header -->
+            <!--APP-SIDEBAR-->
+            <div class="sticky">
+                <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+                <div class="app-sidebar">
+                    <div class="side-header">
+                        <a class="header-brand1" href="index.html">
+                         <h3>Bitirme Projesi</h3>
+                        </a>
+                        <!-- LOGO -->
+                    </div>
+                    <div class="main-sidemenu">
+                        <ul class="side-menu">
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon bi bi-patch-question"></i><span class="side-menu__label">Veterinere Sor</span></a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fa fa-reply"></i><span class="side-menu__label">Sorularım</span></a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fa fa-paw"></i><span class="side-menu__label">Hayvanlarım</span></a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fa fa-users"></i><span class="side-menu__label">Veterinerler</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/APP-SIDEBAR-->
             </div>
+
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+                        @RenderBody()
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+                </div>
+            </div>
+            <!--app-content closed-->
         </div>
-    </div>*@
-    <div class="container body-content">
-        @RenderBody()
-        @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+
+    
+       
+       
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    
+
+    <!-- JQUERY JS -->
+    <script src="~/assets/js/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="~/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- SPARKLINE JS-->
+    <script src="~/assets/js/jquery.sparkline.min.js"></script>
+
+    <!-- CHART-CIRCLE JS-->
+    <script src="~/assets/js/circle-progress.min.js"></script>
+
+    <!-- C3 CHART JS-->
+    <script src="~/assets/plugins/charts-c3/d3.v5.min.js"></script>
+    <script src="~/assets/plugins/charts-c3/c3-chart.js"></script>
+
+    <!-- INPUT MASK JS-->
+    <script src="~/assets/plugins/input-mask/jquery.mask.min.js"></script>
+
+    <!-- SIDEBAR JS -->
+    <script src="~/assets/plugins/sidebar/sidebar.js"></script>
+
+    <!-- SIDE-MENU JS -->
+    <script src="~/assets/plugins/sidemenu/sidemenu.js"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="~/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+    <script src="~/assets/plugins/p-scroll/pscroll.js"></script>
+    <script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>
+
+    <!-- Color Theme js -->
+    <script src="~/assets/js/themeColors.js"></script>
+
+    <!-- Sticky js -->
+    <script src="~/assets/js/sticky.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="~/assets/js/custom.js"></script>
+
 </body>
+
+
+
 </html>
