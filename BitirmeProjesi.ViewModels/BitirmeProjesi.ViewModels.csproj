@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="Common\CommonViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\QuestionViewModel.cs" />
     <Compile Include="User\Security\LoginViewModel.cs" />
     <Compile Include="User\Security\RegisterViewModel.cs" />
+    <Compile Include="User\VetListViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

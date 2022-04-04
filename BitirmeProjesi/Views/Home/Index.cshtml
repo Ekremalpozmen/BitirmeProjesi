@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BitirmeProjesi.ViewModels.User.QuestionViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,28 +13,25 @@
             </div>
             <div class="card-body">
                 <div class="col-md-12 ">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sorunuzun Başlığını Yazınız">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Sorunuzun Detaylarını Giriniz" rows="8"></textarea>
-                        </div>
-                        <div class="form-group">
-
-                            <select class="form-control select2-show-search form-select" data-placeholder="Veteriner Seçiniz">
-                                <option label="Rastgele Veteriner"></option>
-                                <option value="vet1">Vet1</option>
-                                <option value="vet2">Vet2</option>
-                                <option value="vet3">Vet3</option>
-                                <option value="vet4">Vet4</option>
-                                <option value="vet5">Vet5</option>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-success w-lg"><i class="fe fe-send"></i>Gönder</button>
-                    </form>
+                    @using (Html.BeginForm("AddQuestion", "Home", new { Area = String.Empty }, FormMethod.Post))
+                    {
+                        <form>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Sorunuzun Başlığını Yazınız", required = "required" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Sorunuzun Detaylarını Giriniz", rows = "8", required = "required" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(a => a.VetId, new SelectList(ViewBag.VetList, "Id", "Name"), new { @class = "form-control select2-show-search form-select" })
+                            </div>
+                            <button type="submit" class="btn btn-success w-lg"><i class="fe fe-send"></i>Gönder</button>
+                        </form>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+    <script src="~/assets/plugins/notify/js/sample.js"></script>
+

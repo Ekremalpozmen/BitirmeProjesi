@@ -20,6 +20,7 @@ namespace BitirmeProjesi.Data
         public Nullable<long> UserId { get; set; }
         public Nullable<long> VetId { get; set; }
         public Nullable<decimal> RatingScore { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
     
         public virtual Users Users { get; set; }
         public virtual VetUsers VetUsers { get; set; }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\AddQuestionService.cs" />
     <Compile Include="User\Security\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>

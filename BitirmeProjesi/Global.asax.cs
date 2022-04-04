@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using BitirmeProjesi.Data;
 using BitirmeProjesi.LightInject;
@@ -22,6 +21,7 @@ namespace BitirmeProjesi
             System.Net.ServicePointManager.SecurityProtocol |=
                 SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             container.Register(typeof(BitirmeProjesi.Services.User.Security.SecurityService), new PerRequestLifeTime());
+            container.Register(typeof(BitirmeProjesi.Services.User.AddQuestionService), new PerRequestLifeTime());
             container.EnableMvc();
         }
     }
