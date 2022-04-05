@@ -17,7 +17,7 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="~/assets/colors/color1.css" />
 </head>
- 
+
 <body class="app sidebar-mini ltr">
     <!-- PAGE -->
     <div class="page">
@@ -40,7 +40,7 @@
                                 </a>
                                 <div class="dropdown-menu header-search dropdown-menu-start">
                                     <div class="input-group w-100 p-2">
-                                        <input type="text" class="form-control" placeholder="Search....">
+                                        <input type="text" class="form-control" placeholder="Arama....">
 
                                         <div class="input-group-text btn btn-primary">
                                             <i class="fe fe-search" aria-hidden="true"></i>
@@ -58,7 +58,7 @@
                                             </a>
                                             <div class="dropdown-menu header-search dropdown-menu-start">
                                                 <div class="input-group w-100 p-2">
-                                                    <input type="text" class="form-control" placeholder="Search....">
+                                                    <input type="text" class="form-control" placeholder="Arama....">
                                                     <div class="input-group-text btn btn-primary">
                                                         <i class="fa fa-search" aria-hidden="true"></i>
                                                     </div>
@@ -112,10 +112,10 @@
                     <div class="main-sidemenu">
                         <ul class="side-menu">
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon bi bi-patch-question"></i><span class="side-menu__label">Veterinere Sor</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide" href="@Url.Action("Index","Home")"><i class="side-menu__icon bi bi-patch-question"></i><span class="side-menu__label">Veterinere Sor</span></a>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fa fa-reply"></i><span class="side-menu__label">Sorularım</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide" href="@Url.Action("Index","Question")"><i class="side-menu__icon fa fa-reply"></i><span class="side-menu__label">Sorularım</span></a>
                             </li>
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fa fa-paw"></i><span class="side-menu__label">Hayvanlarım</span></a>
@@ -141,10 +141,6 @@
             </div>
             <!--app-content closed-->
         </div>
-
-
-
-
     </div>
 
 
@@ -159,13 +155,6 @@
     <!-- SPARKLINE JS-->
     <script src="~/assets/js/jquery.sparkline.min.js"></script>
 
-    <!-- CHART-CIRCLE JS-->
-    <script src="~/assets/js/circle-progress.min.js"></script>
-
-    <!-- C3 CHART JS-->
-    <script src="~/assets/plugins/charts-c3/d3.v5.min.js"></script>
-    <script src="~/assets/plugins/charts-c3/c3-chart.js"></script>
-
     <!-- INPUT MASK JS-->
     <script src="~/assets/plugins/input-mask/jquery.mask.min.js"></script>
 
@@ -175,10 +164,9 @@
     <!-- SIDE-MENU JS -->
     <script src="~/assets/plugins/sidemenu/sidemenu.js"></script>
 
-    <!-- Perfect SCROLLBAR JS-->
-    <script src="~/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
-    <script src="~/assets/plugins/p-scroll/pscroll.js"></script>
-    <script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>
+    <script src="~/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="~/assets/js/table-data.js"></script>
 
     <!-- SELECT2 JS -->
     <script src="~/assets/plugins/select2/select2.full.min.js"></script>
@@ -194,7 +182,4 @@
     <script src="~/assets/js/custom.js"></script>
 
 </body>
-
-
-
 </html>

@@ -40,7 +40,7 @@
             selectAll: false,             // to display select all button in multiselect mode.|| also select all will not be available on mobile devices.
 
             search: false,                // to display input for filtering content. selectAlltext will be input text placeholder
-            searchText: 'Search...',      // placeholder for search input
+            searchText: 'Arama...',      // placeholder for search input
             searchFn: function(haystack, needle) { // search function
                 return haystack.toLowerCase().indexOf(needle.toLowerCase()) < 0;
             },

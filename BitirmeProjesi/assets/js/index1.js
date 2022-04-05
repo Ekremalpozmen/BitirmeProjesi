@@ -423,7 +423,7 @@ $(function(e) {
         order: [],
         columnDefs: [{ orderable: false, targets: [0, 4, 5] }],
         language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Arama...',
             sSearch: '',
         }
     });

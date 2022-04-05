@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="row row-sm">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">Sorularım</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                        <thead>
+                            <tr>
+                                <th class="wd-15p border-bottom-0">Soru Başlığı</th>
+                                <th class="wd-15p border-bottom-0">Veteriner Hekim</th>
+                                <th class="wd-15p border-bottom-0">Detay Gör</th>
+                                <th class="wd-15p border-bottom-0">Puan Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>başlık1</td>
+                                <td>veteriner 1</td>
+                                <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
+                                <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
+
+                            </tr>
+                            <tr>
+                                <td>başlık2</td>
+                                <td>veteriner 2</td>
+                                <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
+                                <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
