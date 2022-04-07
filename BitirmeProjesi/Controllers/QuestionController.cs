@@ -1,8 +1,6 @@
 ﻿using BitirmeProjesi.Controllers.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using BitirmeProjesi.Services.User;
+using BitirmeProjesi.ViewModels.User;
 using System.Web.Mvc;
 
 namespace BitirmeProjesi.Controllers
@@ -10,10 +8,15 @@ namespace BitirmeProjesi.Controllers
     [Authorize]
     public class QuestionController : BaseController
     {
-        // GET: Question
-        public ActionResult Index()
+        private readonly QuestionService _questionService;
+        public QuestionController(QuestionService questionService)
         {
-            return View();
+            _questionService = questionService;
+        }
+        public ActionResult Index(QuestionViewModel model)
+        {
+            var result = _questionService.QuestionList(model, CurrentUser);
+            return View(result);
         }
     }
 }

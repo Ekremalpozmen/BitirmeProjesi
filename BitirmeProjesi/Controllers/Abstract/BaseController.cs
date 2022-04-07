@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BitirmeProjesi.Data;
+using BitirmeProjesi.ViewModels.User;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,9 +19,29 @@ namespace BitirmeProjesi.Controllers.Abstract
             base.Initialize(context);
         }
 
+        public UserModel CurrentUser { get; set; }
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
+            if (context.HttpContext.User.Identity.IsAuthenticated)
+            {
+                using (BitirmeProjesiEntities db = new BitirmeProjesiEntities())
+                {
+                    var contextUserId = Convert.ToInt32(System.Web.HttpContext.Current.User.Identity.Name);
+                    var user = db.Users.FirstOrDefault(x => x.Id == contextUserId);
 
+                    if (user != null)
+                    {
+                        CurrentUser = new UserModel()
+                        {
+                            Id = (int)user.Id,
+                            Name = user.Name,
+                            SurName = user.SurName,
+                            UserName = user.UserName,
+                            Email = user.Email,
+                        };
+                    }
+                }
+            }
             base.OnActionExecuting(context);
         }
 

@@ -47,6 +47,7 @@
     <Compile Include="User\QuestionViewModel.cs" />
     <Compile Include="User\Security\LoginViewModel.cs" />
     <Compile Include="User\Security\RegisterViewModel.cs" />
+    <Compile Include="User\UserModel.cs" />
     <Compile Include="User\VetListViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

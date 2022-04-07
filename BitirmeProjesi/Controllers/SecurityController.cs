@@ -33,13 +33,13 @@ namespace BitirmeProjesi.Controllers
                 var loginResult = _securityService.Login(model);
                 if (loginResult != null)
                 {
-                    FormsAuthentication.SetAuthCookie(loginResult.UserName, false);
-                    Session["UserName"] = model.UserName;
+                    FormsAuthentication.SetAuthCookie(loginResult.Id.ToString(), false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
+                    return View();
                 }
             }
             return View();

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<BitirmeProjesi.ViewModels.User.QuestionViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,20 +24,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>başlık1</td>
-                                <td>veteriner 1</td>
-                                <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
-                                <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
-
-                            </tr>
-                            <tr>
-                                <td>başlık2</td>
-                                <td>veteriner 2</td>
-                                <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
-                                <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
-
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="@item.Id">
+                                    <td>@item.Title</td>
+                                    <td>@item.VetFullName</td>
+                                    <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
+                                    <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
