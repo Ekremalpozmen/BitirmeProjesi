@@ -136,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Abstract\BaseController.cs" />
+    <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -836,6 +837,7 @@
     <Content Include="Views\Question\Index.cshtml" />
     <Content Include="Views\Question\_SendRating.cshtml" />
     <Content Include="Views\Message\_MessagesDetail.cshtml" />
+    <Content Include="Views\Animals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
