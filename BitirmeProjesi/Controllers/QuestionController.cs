@@ -7,17 +7,7 @@ namespace BitirmeProjesi.Controllers
 {
     [Authorize]
     public class QuestionController : BaseController
-
     {
-        public class Ogrenci
-        {
-            public int OgrenciNumarasi { get; set; }
-            public string Adi { get; set; }
-            public string SoyAdi { get; set; }
-            public int Yasi { get; set; }
-            public string Memleketi { get; set; }
-        }
-
         private readonly QuestionService _questionService;
         public QuestionController(QuestionService questionService)
         {
@@ -39,7 +29,5 @@ namespace BitirmeProjesi.Controllers
         {
             return View();
         }
-
-
     }
 }

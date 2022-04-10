@@ -1,4 +1,4 @@
-﻿
+﻿@model List<BitirmeProjesi.ViewModels.User.AnimalsViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,6 +9,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <h3 class="card-title">Hayvanlarım</h3>
+                <button class="btn btn-secondary mt-2 " style="display:grid">Hayvan Ekle</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,11 +24,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>ad</td>
-                             <td>ırk</td>
-                             <td>dt</td>
-                             <td>cisiyet</td>
-                             <td>aşı bilgileri</td></tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Type</td>
+                                    <td>@item.Birthdate.ToString("d")</td>
+                                    <td>@item.Gender</td>
+                                    <td>
+                                        <a data-modal-form="true"
+                                           data-modal-size="modal-xl"
+                                           data-modal-title="Aşı Bilgileri"
+                                           href="#"
+                                           data-hook-beforeunload="true"
+                                           class="btn btn-secondary mt-2 ">
+                                            Aşı Bilgileri
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

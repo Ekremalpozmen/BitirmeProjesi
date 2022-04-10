@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\AnimalsService.cs" />
     <Compile Include="User\QuestionService .cs" />
     <Compile Include="User\AddQuestionService.cs" />
     <Compile Include="User\Security\SecurityService.cs" />

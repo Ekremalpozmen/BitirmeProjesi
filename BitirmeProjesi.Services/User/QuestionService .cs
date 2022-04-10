@@ -32,7 +32,7 @@ namespace BitirmeProjesi.Services.User
                                  ,[RatingScore]   
                               	 ,vu.Name as VetName
                               	 ,vu.SurName as VetSurName
-                                 FROM [BitirmeProjesi].[dbo].[Questions] q INNER JOIN [dbo].VetUsers vu ON vu.Id=q.VetId where q.UserId=userId";
+                                 FROM [BitirmeProjesi].[dbo].[Questions] q INNER JOIN [dbo].VetUsers vu ON vu.Id=q.VetId where q.UserId=@userId";
                 var questionList = (db.Query<QuestionViewModel>(_sql, new { userId = user.Id })).ToList();
                 return questionList;
             }

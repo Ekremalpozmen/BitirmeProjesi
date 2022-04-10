@@ -23,6 +23,7 @@ namespace BitirmeProjesi
             container.Register(typeof(BitirmeProjesi.Services.User.Security.SecurityService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.AddQuestionService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.QuestionService), new PerRequestLifeTime());
+            container.Register(typeof(BitirmeProjesi.Services.User.AnimalsService), new PerRequestLifeTime());
             container.EnableMvc();
         }
     }
