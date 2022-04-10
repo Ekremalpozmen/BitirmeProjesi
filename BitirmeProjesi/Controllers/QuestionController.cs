@@ -7,7 +7,7 @@ namespace BitirmeProjesi.Controllers
 {
     [Authorize]
     public class QuestionController : BaseController
-        
+
     {
         public class Ogrenci
         {
@@ -35,16 +35,11 @@ namespace BitirmeProjesi.Controllers
         }
 
         [HttpPost]
-        public JsonResult SendRating(int Stars)
+        public ActionResult SendRating(int star)
         {
-            return Json("Öğreci başarıyla POST edilmiştir.", JsonRequestBehavior.AllowGet);
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult OgrenciBilgisi(Ogrenci o)
-        {
-            return Json("Öğreci başarıyla POST edilmiştir.", JsonRequestBehavior.AllowGet);
-        }
 
     }
 }
