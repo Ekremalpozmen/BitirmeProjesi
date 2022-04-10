@@ -11,7 +11,8 @@ $(function(e) {
         swal(message);
     });
     // With message and title
-    $(document).on("click", "#but2", function(e) {
+    $(document).on("click", "#but2", function (e) {
+        debugger;
         $('body').removeClass('timer-alert');
         var message = $("#message").val();
         var title = $("#title").val();

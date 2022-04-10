@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/assets/js/jquery.min.js"></script>
 <br />
 
 <div class="row row-sm">
@@ -30,7 +30,16 @@
                                     <td>@item.Title</td>
                                     <td>@item.VetFullName</td>
                                     <td><button type="button" class="btn btn-primary"> Detay Gör</button></td>
-                                    <td><button type="button" class="btn btn-primary"> Puan Ver</button></td>
+                                    <td>
+                                        <a data-modal-form="true"
+                                           data-modal-size="modal-xl"
+                                           data-modal-title="Puan Ver"
+                                           href="@Url.Action("SendRating", "Question", routeValues: new {Area = string.Empty})"
+                                           data-hook-beforeunload="true"
+                                           class="btn btn-secondary mt-2 ">
+                                            Puan Ver
+                                        </a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -40,3 +49,4 @@
         </div>
     </div>
 </div>
+

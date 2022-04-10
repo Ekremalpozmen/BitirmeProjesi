@@ -2,7 +2,7 @@
     
     $.ratePicker("#rating-1", {
         rate : function (stars){
-            alert('Sample 3\'s Rate is ' + stars);
+            alert('Samplasde 3\'s Rate is ' + stars);
         }
     });
 

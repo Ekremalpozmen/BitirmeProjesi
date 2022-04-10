@@ -33,7 +33,7 @@ namespace BitirmeProjesi.Controllers
                 var loginResult = _securityService.Login(model);
                 if (loginResult != null)
                 {
-                    FormsAuthentication.SetAuthCookie(loginResult.Id.ToString(), false);
+                    FormsAuthentication.SetAuthCookie(loginResult.Id.ToString(), true);
                     return RedirectToAction("Index", "Home");
                 }
                 else

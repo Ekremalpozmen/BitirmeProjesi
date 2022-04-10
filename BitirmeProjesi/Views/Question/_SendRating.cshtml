@@ -1,0 +1,36 @@
+﻿<div class="mb-3">
+    <div class="row row-cards">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="rating-stars block" id="rating-1" data-stars="2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="form-group form-group-sm row">
+    <div class="col-xs-12">
+        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal"><span style="color: white" class="fa fa-times"></span>&nbsp;&nbsp;Vazgeç</button>
+        <button type="submit" id="asd" class="btn btn-success"><span style="color: white" class="fa fa-check"></span>&nbsp;&nbsp;Kaydet</button>
+    </div>
+</div>
+<div class="clearfix"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+<!-- Star Rating Js-->
+<script src="~/assets/plugins/rating/jquery-rate-picker.js"></script>
+
+
+
+
+<script>
+    $.ratePicker("#rating-1", {
+        rate: function (stars) {
+            alert('aa 3\'s Rate is ' + stars);
+        }
+    });
+</script>
+
+  
