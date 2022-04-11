@@ -38,7 +38,17 @@
                                     <td>@item.Name</td>
                                     <td>@item.Type</td>
                                     <td>@item.Birthdate.ToString("d")</td>
-                                    <td>@item.Gender</td>
+                                    <td>
+                                        @if (item.Gender)
+                                        {
+                                            <h6>Erkek</h6>
+                                        }
+                                        else
+                                        {
+                                            <h6>Dişi</h6>
+                                        }
+
+                                    </td>
                                     <td>
                                         <a data-modal-form="true"
                                            data-modal-size="modal-xl"

@@ -19,5 +19,6 @@ namespace BitirmeProjesi.Data
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<long> FromUserId { get; set; }
         public Nullable<long> ToUserId { get; set; }
+        public Nullable<long> QuestionsId { get; set; }
     }
 }

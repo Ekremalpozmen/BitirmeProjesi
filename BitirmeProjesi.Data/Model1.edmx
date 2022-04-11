@@ -14,6 +14,7 @@
           <Property Name="Type" Type="nvarchar" MaxLength="250" />
           <Property Name="Birthdate" Type="datetime" />
           <Property Name="Gender" Type="bit" />
+          <Property Name="UserId" Type="bigint" />
         </EntityType>
         <EntityType Name="AnimalsVaccinations">
           <Key>
@@ -34,6 +35,7 @@
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="FromUserId" Type="bigint" />
           <Property Name="ToUserId" Type="bigint" />
+          <Property Name="QuestionsId" Type="bigint" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -73,7 +75,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" />
           <Property Name="SurName" Type="nvarchar" MaxLength="250" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
@@ -177,6 +179,7 @@
           <Property Name="Birthdate" Type="DateTime" Precision="3" />
           <Property Name="Gender" Type="Boolean" />
           <NavigationProperty Name="AnimalsVaccinations" Relationship="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals" FromRole="Animals" ToRole="AnimalsVaccinations" />
+          <Property Name="UserId" Type="Int64" />
         </EntityType>
         <EntityType Name="AnimalsVaccinations">
           <Key>
@@ -288,6 +291,7 @@
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="FromUserId" Type="Int64" />
           <Property Name="ToUserId" Type="Int64" />
+          <Property Name="QuestionsId" Type="Int64" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -298,6 +302,7 @@
           <EntitySetMapping Name="Animals">
             <EntityTypeMapping TypeName="BitirmeProjesiModel.Animals">
               <MappingFragment StoreEntitySet="Animals">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -374,6 +379,7 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="BitirmeProjesiModel.Messages">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
                 <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
                 <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
