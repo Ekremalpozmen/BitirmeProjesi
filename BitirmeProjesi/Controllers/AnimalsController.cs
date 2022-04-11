@@ -1,10 +1,6 @@
 ﻿using BitirmeProjesi.Controllers.Abstract;
 using BitirmeProjesi.Services.User;
 using BitirmeProjesi.ViewModels.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BitirmeProjesi.Controllers
@@ -20,6 +16,16 @@ namespace BitirmeProjesi.Controllers
         {
             var result = _animalsService.AnimalsList(model, CurrentUser);
             return View(result);
+        }
+        public ActionResult AddAnimal()
+        {
+            return PartialView("~/Views/Animals/_AddAnimal.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult AddAnimal(AnimalsViewModel model)
+        {
+            return View();
         }
 
     }

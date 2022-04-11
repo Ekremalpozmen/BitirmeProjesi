@@ -838,6 +838,7 @@
     <Content Include="Views\Question\_SendRating.cshtml" />
     <Content Include="Views\Message\_MessagesDetail.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
+    <Content Include="Views\Animals\_AddAnimal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
