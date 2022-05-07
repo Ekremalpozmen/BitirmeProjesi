@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitirmeProjesi.ViewModels.User
 {
-    public class AnimalsViewModel
+    public class AnimalListViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,5 +15,10 @@ namespace BitirmeProjesi.ViewModels.User
         public bool Gender { get; set; }
         public int UserId { get; set; }
 
+    }
+
+    public class AnimalSearchViewModel
+    {
+        public string Name { get; set; }
     }
 }

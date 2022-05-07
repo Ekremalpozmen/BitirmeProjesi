@@ -1,26 +1,26 @@
-﻿@model BitirmeProjesi.ViewModels.User.AnimalsViewModel
+﻿@model BitirmeProjesi.ViewModels.User.AnimalListViewModel
 
 @using (Html.BeginForm("AddAnimal", "Animals", new { Area = String.Empty }, FormMethod.Post))
 {
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                    <div class="form-group">
-                        <label class="form-label">Hayvan Adı</label>
-                        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control ", required = "required" })
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Irkı</label>
-                        @Html.TextBoxFor(m => m.Type, null, new { @class = "form-control ", required = "required" })
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Doğum Tarihi</label>
-                        @Html.TextBoxFor(m => m.Birthdate, null, new { @class = "form-control ", required = "required" })
-                    </div>
-                    <div class="form-group select2-sm">
-                        <label class="form-label">Cinsiyet</label>
-                        @Html.DropDownListFor(m => m.Gender, new List<SelectListItem> { new SelectListItem { Text = "Erkek", Value = "1" }, new SelectListItem { Text = "Dişi", Value = "0" } }, new { @class = "form-control select2-show-search form-select" })
-                    </div>
+                <div class="form-group">
+                    <label class="form-label">Hayvan Adı</label>
+                    @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control ", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Irkı</label>
+                    @Html.TextBoxFor(m => m.Type, null, new { @class = "form-control ", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Doğum Tarihi</label>
+                    @Html.TextBoxFor(m => m.Birthdate, null, new { @class = "form-control ", required = "required" })
+                </div>
+                <div class="form-group select2-sm">
+                    <label class="form-label">Cinsiyet</label>
+                    @Html.DropDownListFor(m => m.Gender, new List<SelectListItem> { new SelectListItem { Text = "Erkek", Value = "1" }, new SelectListItem { Text = "Dişi", Value = "0" } }, new { @class = "form-control select2-show-search form-select" })
+                </div>
             </div>
         </div>
     </div>

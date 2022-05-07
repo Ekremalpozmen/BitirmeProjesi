@@ -56,6 +56,12 @@
       <HintPath>..\packages\LightInject.6.4.1\lib\net46\LightInject.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPaging, Version=2.1.13.46, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPaging.2.1.13\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -141,6 +147,7 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -561,6 +568,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-confirmation\bootstrap-confirmation.js" />
+    <Content Include="Scripts\bootstrap-confirmation\bootstrap-confirmation.min.js" />
+    <Content Include="Scripts\bootstrap-maxlength\bootstrap-maxlength.js" />
+    <Content Include="Scripts\bootstrap-maxlength\bootstrap-maxlength.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\colors\color1.css.map" />
@@ -807,7 +818,12 @@
     <Content Include="assets\scss\_variables.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
+    <Content Include="Scripts\custom.ajax.pager.js" />
+    <Content Include="Scripts\custom.ajax.pager.min.js" />
+    <Content Include="Scripts\custom.jquery.validate.unobtrusive.dynamic.js" />
+    <Content Include="Scripts\custom.jquery.validate.unobtrusive.dynamic.min.js" />
     <Content Include="Scripts\custom.modal.form.js" />
+    <Content Include="Scripts\custom.modal.form.min.js" />
     <Content Include="Scripts\custom.modal.view.js" />
     <Content Include="Scripts\custom.modal.view.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -815,6 +831,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -839,6 +857,9 @@
     <Content Include="Views\Message\_MessagesDetail.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
     <Content Include="Views\Animals\_AddAnimal.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
+    <Content Include="Views\Animals\AnimalList.cshtml" />
+    <Content Include="Views\Animals\DisplayTemplates\AnimalListViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
