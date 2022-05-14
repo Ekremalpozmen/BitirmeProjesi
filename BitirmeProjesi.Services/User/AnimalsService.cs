@@ -6,6 +6,7 @@ using LinqKit;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -23,7 +24,7 @@ namespace BitirmeProjesi.Services.User
         }
 
 
-        private IQueryable<AnimalListViewModel> _getAnimalListIQueryable(Expression<Func<Data.Animals, bool>> expr)
+        private IQueryable<AnimalListViewModel> _getAnimalListIQueryable(Expression<Func<Data.Animals, bool>> expr, UserModel user)
         {
             return (from a in _context.Animals.AsExpandable().Where(expr)
                     select new AnimalListViewModel()
@@ -46,11 +47,19 @@ namespace BitirmeProjesi.Services.User
                 predicate.And(a => a.Name.Contains(animalSearchViewModel.Name));
             }
 
-            return _getAnimalListIQueryable(predicate);
+            return _getAnimalListIQueryable(predicate, user);
+        }
+
+        public async Task<AnimalListViewModel> GetAnimalListViewAsync(int animalId, UserModel user)
+        {
+            var predicate = PredicateBuilder.New<Animals>(true);/*AND*/
+            predicate.And(a => a.Id == animalId);
+            var product = await _getAnimalListIQueryable(predicate, user).SingleOrDefaultAsync().ConfigureAwait(false);
+            return product;
         }
 
 
-        //public List<AnimalsViewModel> AnimalsList(AnimalsViewModel model, UserModel user)
+        //public List<AnimalListViewModel> AnimalsList(AnimalListViewModel model, UserModel user)
         //{
         //    using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BitirmeProjesiConnectionString"].ConnectionString))
         //    {
@@ -62,45 +71,43 @@ namespace BitirmeProjesi.Services.User
         //                              ,[Gender]
         //                              ,[UserId]
         //                          FROM [BitirmeProjesi].[dbo].[Animals] where UserId=@userId";
-        //        var animalsList = (db.Query<AnimalsViewModel>(_sql, new { userId = user.Id })).ToList();
+        //        var animalsList = (db.Query<AnimalListViewModel>(_sql, new { userId = user.Id })).ToList();
         //        return animalsList;
         //    }
         //}
 
-        //public async Task<ServiceCallResult> AddAnimalsAsync(AnimalsViewModel model, UserModel user)
-        //{
-        //    var callResult = new ServiceCallResult() { Success = false };
+        public async Task<ServiceCallResult> AddAnimalsAsync(AnimalListViewModel model, UserModel user)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
 
-        //    var animal = new Animals()
-        //    {
-        //        Name = model.Name,
-        //        Type = model.Type,
-        //        Birthdate = model.Birthdate,
-        //        Gender = model.Gender,
-        //        UserId = user.Id,
-        //    };
+            var animal = new Animals()
+            {
+                Name = model.Name,
+                Type = model.Type,
+                Birthdate = model.Birthdate,
+                Gender = model.Gender,
+                UserId = user.Id,
+            };
 
-        //    _context.Animals.Add(animal);
+            _context.Animals.Add(animal);
 
-        //    using (var dbTransaction = _context.Database.BeginTransaction())
-        //    {
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync().ConfigureAwait(false);
-        //            dbTransaction.Commit();
-        //            callResult.Success = true;
-        //            callResult.Item = animal.Id;
-        //            callResult.SuccessMessages.Add("Hayvan Başarılı Şekilde Eklendi");
-        //            return callResult;
-        //        }
-        //        catch (Exception exc)
-        //        {
-        //            callResult.ErrorMessages.Add(exc.GetBaseException().Message);
-        //            return callResult;
-        //        }
-        //    }
-        //}
-
-
+            using (var dbTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbTransaction.Commit();
+                    callResult.Success = true;
+                    callResult.Item = animal.Id;
+                    callResult.SuccessMessages.Add("Hayvan Başarılı Şekilde Eklendi");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
     }
 }

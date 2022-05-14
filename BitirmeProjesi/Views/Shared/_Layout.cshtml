@@ -31,8 +31,6 @@
                         <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="index.html">
-                            <img src="../assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
                         </a>
 
                         <div class="d-flex order-lg-2 ms-auto header-right-icons">
@@ -141,6 +139,10 @@
                     <!-- CONTAINER CLOSED -->
                 </div>
             </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+
             <!--app-content closed-->
         </div>
     </div>
@@ -159,6 +161,8 @@
     <script src="~/Scripts/custom.ajax.form.js"></script>
     <script src="~/Scripts/custom.modal.form.js"></script>
     <script src="~/Scripts/custom.ajax.pager.js"></script>
+
+    <script src="~/Scripts/site.js"></script>
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -205,6 +209,7 @@
 
     <!-- CUSTOM JS -->
     <script src="~/assets/js/custom.js"></script>
+
     <script>
         $(document).ready(function () {
             $('body').find('form[data-ajax-form="true"]').each(function () {
