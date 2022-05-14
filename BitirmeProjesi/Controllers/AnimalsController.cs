@@ -23,8 +23,6 @@ namespace BitirmeProjesi.Controllers
         {
             return View();
         }
-
-
       
         public ActionResult AnimalList(AnimalSearchViewModel searchViewModel, int? page)
         {
@@ -88,6 +86,17 @@ namespace BitirmeProjesi.Controllers
                 });
 
         }
+
+
+        public async Task<ActionResult> VaccineList(int animalId)
+        {
+            var model = await _animalsService.GetVaccineListViewModel(animalId);
+
+            return PartialView("~/Views/Animals/_VaccineList.cshtml",model);
+        }
+
+
+
 
     }
 }

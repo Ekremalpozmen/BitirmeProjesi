@@ -1,0 +1,32 @@
+﻿@model List<BitirmeProjesi.ViewModels.User.VaccineListViewModel>
+@{
+    ViewBag.Title = "vaccine";
+}
+    <a data-modal-form="true"
+       data-modal-size="modal-xl"
+       data-modal-title="Aşı Ekle"
+       href="@Url.Action("AddVaccie","Animals")"
+       class="btn btn-secondary mt-2 "
+       style="display:table-caption">
+        Yeni Aşı Ekle
+    </a>
+    <br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Aşı İsmi</th>
+            <th>Yapılış Tarihi</th>
+            <th>Tekrar Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="@item.Id">
+                <td>@item.VaccineName</td>
+                <td>@item.VaccinationDate</td>
+                <td>@item.RecurrenceDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

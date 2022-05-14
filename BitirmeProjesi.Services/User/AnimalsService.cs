@@ -109,5 +109,23 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
+
+        public async Task<List<VaccineListViewModel>> GetVaccineListViewModel(int animalId)
+        {
+            var vaccineList = await (from b in _context.AnimalsVaccinations.AsExpandable()
+                                         where b.AnimalId == animalId
+
+                                         select new VaccineListViewModel()
+                                         {
+
+                                             Id = (int?)b.Id,
+                                             AnimalId = animalId,
+                                             VaccineName = b.VaccineName,
+                                             VaccinationDate = (DateTime)b.VaccinationDate,
+                                             RecurrenceDate = (DateTime)b.RecurrenceDate
+                                         }).ToListAsync();
+            return vaccineList;
+        }
+
     }
 }
