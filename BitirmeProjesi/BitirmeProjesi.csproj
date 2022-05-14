@@ -863,6 +863,7 @@
     <Content Include="Views\Animals\AnimalList.cshtml" />
     <Content Include="Views\Animals\DisplayTemplates\AnimalListViewModel.cshtml" />
     <Content Include="Views\Animals\_VaccineList.cshtml" />
+    <Content Include="Views\Animals\_AddVaccine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -97,6 +97,13 @@ namespace BitirmeProjesi.Controllers
 
 
 
+        public ActionResult AddVaccine()
+        {
+            return PartialView("~/Views/Animals/_AddVaccine.cshtml");
+        }
+
+
+
 
     }
 }
