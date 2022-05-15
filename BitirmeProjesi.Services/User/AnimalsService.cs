@@ -59,23 +59,6 @@ namespace BitirmeProjesi.Services.User
         }
 
 
-        //public List<AnimalListViewModel> AnimalsList(AnimalListViewModel model, UserModel user)
-        //{
-        //    using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BitirmeProjesiConnectionString"].ConnectionString))
-        //    {
-        //        string _sql = @"  
-        //                        SELECT [Id]
-        //                              ,[Name]
-        //                              ,[Type]
-        //                              ,[Birthdate]
-        //                              ,[Gender]
-        //                              ,[UserId]
-        //                          FROM [BitirmeProjesi].[dbo].[Animals] where UserId=@userId";
-        //        var animalsList = (db.Query<AnimalListViewModel>(_sql, new { userId = user.Id })).ToList();
-        //        return animalsList;
-        //    }
-        //}
-
         public async Task<ServiceCallResult> AddAnimalsAsync(AnimalListViewModel model, UserModel user)
         {
             var callResult = new ServiceCallResult() { Success = false };
@@ -113,19 +96,52 @@ namespace BitirmeProjesi.Services.User
         public async Task<List<VaccineListViewModel>> GetVaccineListViewModel(int animalId)
         {
             var vaccineList = await (from b in _context.AnimalsVaccinations.AsExpandable()
-                                         where b.AnimalId == animalId
+                                     where b.AnimalId == animalId
 
-                                         select new VaccineListViewModel()
-                                         {
+                                     select new VaccineListViewModel()
+                                     {
 
-                                             Id = (int?)b.Id,
-                                             AnimalId = animalId,
-                                             VaccineName = b.VaccineName,
-                                             VaccinationDate = (DateTime)b.VaccinationDate,
-                                             RecurrenceDate = (DateTime)b.RecurrenceDate
-                                         }).ToListAsync();
+                                         Id = (int?)b.Id,
+                                         AnimalId = animalId,
+                                         VaccineName = b.VaccineName,
+                                         VaccinationDate = (DateTime)b.VaccinationDate,
+                                         RecurrenceDate = (DateTime)b.RecurrenceDate
+                                     }).ToListAsync();
             return vaccineList;
         }
 
+
+        public async Task<ServiceCallResult> AddVaccineAsync(VaccineListViewModel model, UserModel user)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
+
+            var vaccine = new AnimalsVaccinations()
+            {
+                VaccineName = model.VaccineName,
+                VaccinationDate = model.VaccinationDate,
+                RecurrenceDate = model.RecurrenceDate,
+                AnimalId = model.AnimalId,
+            };
+
+            _context.AnimalsVaccinations.Add(vaccine);
+
+            using (var dbTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbTransaction.Commit();
+                    callResult.Success = true;
+                    callResult.Item = vaccine.Id;
+                    callResult.SuccessMessages.Add("Aşı Başarılı Şekilde Eklendi");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
     }
 }
