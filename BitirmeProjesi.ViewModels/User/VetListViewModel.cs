@@ -10,12 +10,18 @@ namespace BitirmeProjesi.ViewModels.User
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         public string Surname { get; set; }
-
         public string FullName
         {
-            get { return Name + ", " + Surname; }
+            get { return Name +    Surname; }
         }
+        public string Email { get; set; }
+        public Nullable<bool> Gender { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string University { get; set; }
+        public string Expertise { get; set; }
+        public Nullable<System.DateTime> GraduationDate { get; set; }
+        public string WorkShopName { get; set; }
     }
 }

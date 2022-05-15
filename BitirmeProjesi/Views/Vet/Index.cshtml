@@ -1,4 +1,6 @@
 ﻿
+@model List<BitirmeProjesi.ViewModels.User.VetListViewModel>
+
 @{
     ViewBag.Title = "Veterinerler";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,61 +17,31 @@
             <div class="card-body">
                 <!-- ROW-3 OPEN -->
                 <div class="row row-cols-4">
-                    <div class="col-xl-3 col-sm-6 col-md-6">
-                        <div class="card border p-0">
-                            <div class="card-header ">
-                                <h3 class="card-title">Veteriner Hekim</h3>
-                            </div>
-                            <div class="card-body text-center">
-                                <i></i>
-                                @*<span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg" style="background: url(&quot;../assets/images/users/15.jpg&quot;) center center;"></span>*@
-                                <h4 class="h4 mb-0 mt-3">Adı Soyadı</h4>
-                            </div>
-                            <div class="card-footer text-center">
-                                Ortalama Puan:
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="d-flex justify-content-between">
-                                    <button type="submit" class="btn btn-success"><i class="fe fe-user"></i>Profil</button>
-                                    <button type="submit" class="btn btn-success"><i class="fe fe-message-circle"></i>Soru Sor</button>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xl-3 col-sm-6 col-md-6">
+                            <div class="card border p-0">
+                                <div class="card-header ">
+                                    <h3 class="card-title">Veteriner Hekim</h3>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COL END -->
-                    @*<div class="col-xl-3 col-sm-6 col-md-6">
-                        <div class="card border p-0">
-                            <div class="card-header">
-                                <h3 class="card-title">Contact card</h3>
-                                <div class="card-options">
-                                    <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                                    <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                <div class="card-body text-center">
+                                    <i></i>
+                                    @*<span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg" style="background: url(&quot;../assets/images/users/15.jpg&quot;) center center;"></span>*@
+                                    <h4 class="h4 mb-0 mt-3">@item.FullName</h4>
                                 </div>
-                            </div>
-                            <div class="card-body text-center">
-                                <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg" style="background: url(&quot;../assets/images/users/15.jpg&quot;) center center;"></span>
-                                <h4 class="h4 mb-0 mt-3">Laura Norda</h4>
-                                <p class="card-text">Web designer</p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="row user-social-detail">
-                                    <div class="social-profile me-4 rounded text-center">
-                                        <a href=""><i class="fa fa-google"></i></a>
-                                    </div>
-                                    <div class="social-profile me-4 rounded text-center">
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                    </div>
-                                    <div class="social-profile me-4 rounded text-center">
-                                        <a href=""><i class="fa fa-twitter"></i></a>
+                                <div class="card-footer text-center">
+                                    Ortalama Puan:
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-success"><i class="fe fe-user"></i>Profil</button>
+                                        <button type="submit" class="btn btn-success"><i class="fe fe-message-circle"></i>Soru Sor</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>*@
-                  
+                    }
                 </div>
-                <!-- ROW-3 CLOSED -->
-
             </div>
         </div>
     </div>
