@@ -147,6 +147,7 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\VetController.cs" />
     <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -864,6 +865,7 @@
     <Content Include="Views\Animals\DisplayTemplates\AnimalListViewModel.cshtml" />
     <Content Include="Views\Animals\_VaccineList.cshtml" />
     <Content Include="Views\Animals\_AddVaccine.cshtml" />
+    <Content Include="Views\Vet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
