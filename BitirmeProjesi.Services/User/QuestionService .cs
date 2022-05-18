@@ -37,5 +37,36 @@ namespace BitirmeProjesi.Services.User
                 return questionList;
             }
         }
+
+        public ServiceCallResult QuestionSendRating(int star, int questionId)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
+
+            var question = _context.Questions.FirstOrDefault(x => x.Id == questionId);
+
+            question.RatingScore = star;
+
+            using (var dbtransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbtransaction.Commit();
+                    callResult.Success = true;
+                    callResult.SuccessMessages.Add("Soru başarıyla eklendi.");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
+
+
+
+
+
     }
 }

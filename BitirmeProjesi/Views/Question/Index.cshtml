@@ -1,10 +1,13 @@
-﻿@model List<BitirmeProjesi.ViewModels.User.QuestionViewModel>
+﻿@using Newtonsoft.Json
+
+@model List<BitirmeProjesi.ViewModels.User.QuestionViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/assets/js/jquery.min.js"></script>
 <br />
+<input type="hidden" id="questionIdData" value="@JsonConvert.SerializeObject(Model.Select(x=>x.Id))" />
 
 <div class="row row-sm">
     <div class="col-lg-12">
@@ -41,14 +44,17 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a data-modal-form="true"
-                                           data-modal-size="modal-xl"
-                                           data-modal-title="Puan Ver"
-                                           href="@Url.Action("SendRating", "Question", routeValues: new {Area = string.Empty})"
-                                           data-hook-beforeunload="true"
-                                           class="btn btn-secondary mt-2 ">
-                                            Puan Ver
-                                        </a>
+                                        <div data-id="@item.Id" class="rating-stars block" id="rating-@item.Id" data-stars="@item.RatingScore">
+                                        </div>
+
+                                        @*<a data-modal-form="true"
+                                               data-modal-size="modal-xl"
+                                               data-modal-title="Puan Ver"
+                                               href="@Url.Action("SendRatingPartialView", "Question", routeValues: new {Area = string.Empty,questionId = item.Id})"
+                                               data-hook-beforeunload="true"
+                                               class="btn btn-secondary mt-2 ">
+                                                Puan Ver
+                                            </a>*@
                                     </td>
                                 </tr>
                             }
@@ -60,3 +66,44 @@
     </div>
 </div>
 
+<script src="~/assets/plugins/rating/jquery-rate-picker.js"></script>
+
+<script>
+    var questionIdData = JSON.parse($('#questionIdData').val());
+
+    for (let i = 0; i < questionIdData.length; ++i) {
+        $.ratePicker('#rating-' + questionIdData[i], {
+            rate: function (stars, i) {
+                $(".rating-stars").click(function () {
+                    var id = $(this).attr("data-id");
+                    postData(stars,id)
+                });
+
+            }
+        });
+    }
+
+    function postData(stars, id) {
+        $.ajax({
+            type: "POST",
+            url: "/Question/SendRating/",
+            data: { "star": stars, "questionId": id },
+
+        });
+    }
+
+
+</script>
+@*      ;*@
+
+@*function asd(stars,id) {
+        alert("asd");
+        alert(stars);
+        alert(id);
+        $.ajax({
+            type: "POST",
+            url: "/Question/SendRating/",
+            data: { "star": stars, "questionId": id },
+
+        });
+    }*@

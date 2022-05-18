@@ -1,6 +1,7 @@
 ﻿using BitirmeProjesi.Controllers.Abstract;
 using BitirmeProjesi.Services.User;
 using BitirmeProjesi.ViewModels.User;
+using Microsoft.Web.Mvc;
 using System.Web.Mvc;
 
 namespace BitirmeProjesi.Controllers
@@ -19,14 +20,16 @@ namespace BitirmeProjesi.Controllers
             return View(result);
         }
 
-        public ActionResult SendRating()
+        public ActionResult SendRatingPartialView(int questionId)
         {
             return PartialView("~/Views/Question/_SendRating.cshtml");
         }
 
-        [HttpPost]
-        public ActionResult SendRating(int star)
+        [AjaxOnly, HttpPost]
+        public ActionResult SendRating(int star, int questionId)
         {
+            star +=1;
+            _questionService.QuestionSendRating(star, questionId);
             return View();
         }
     }

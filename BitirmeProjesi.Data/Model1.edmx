@@ -46,7 +46,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="VetId" Type="bigint" />
-          <Property Name="RatingScore" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RatingScore" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -151,6 +151,7 @@
         <EntityContainer Name="BitirmeProjesiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Animals" EntityType="BitirmeProjesiModel.Animals" />
           <EntitySet Name="AnimalsVaccinations" EntityType="BitirmeProjesiModel.AnimalsVaccinations" />
+          <EntitySet Name="Messages" EntityType="BitirmeProjesiModel.Messages" />
           <EntitySet Name="Questions" EntityType="BitirmeProjesiModel.Questions" />
           <EntitySet Name="sysdiagrams" EntityType="BitirmeProjesiModel.sysdiagrams" />
           <EntitySet Name="Users" EntityType="BitirmeProjesiModel.Users" />
@@ -167,7 +168,6 @@
             <End Role="VetUsers" EntitySet="VetUsers" />
             <End Role="Questions" EntitySet="Questions" />
           </AssociationSet>
-          <EntitySet Name="Messages" EntityType="BitirmeProjesiModel.Messages" />
         </EntityContainer>
         <EntityType Name="Animals">
           <Key>
@@ -178,8 +178,8 @@
           <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Birthdate" Type="DateTime" Precision="3" />
           <Property Name="Gender" Type="Boolean" />
-          <NavigationProperty Name="AnimalsVaccinations" Relationship="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals" FromRole="Animals" ToRole="AnimalsVaccinations" />
           <Property Name="UserId" Type="Int64" />
+          <NavigationProperty Name="AnimalsVaccinations" Relationship="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals" FromRole="Animals" ToRole="AnimalsVaccinations" />
         </EntityType>
         <EntityType Name="AnimalsVaccinations">
           <Key>
@@ -192,6 +192,17 @@
           <Property Name="AnimalId" Type="Int64" />
           <NavigationProperty Name="Animals" Relationship="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals" FromRole="AnimalsVaccinations" ToRole="Animals" />
         </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="FromUserId" Type="Int64" />
+          <Property Name="ToUserId" Type="Int64" />
+          <Property Name="QuestionsId" Type="Int64" />
+        </EntityType>
         <EntityType Name="Questions">
           <Key>
             <PropertyRef Name="Id" />
@@ -201,10 +212,10 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="VetId" Type="Int64" />
-          <Property Name="RatingScore" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RatingScore" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Users" Relationship="BitirmeProjesiModel.FK_Questions_User" FromRole="Questions" ToRole="Users" />
           <NavigationProperty Name="VetUsers" Relationship="BitirmeProjesiModel.FK_Questions_VetUser" FromRole="Questions" ToRole="VetUsers" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -233,7 +244,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SurName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -282,17 +293,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Messages">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContentMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
-          <Property Name="FromUserId" Type="Int64" />
-          <Property Name="ToUserId" Type="Int64" />
-          <Property Name="QuestionsId" Type="Int64" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -318,6 +318,18 @@
                 <ScalarProperty Name="RecurrenceDate" ColumnName="RecurrenceDate" />
                 <ScalarProperty Name="VaccinationDate" ColumnName="VaccinationDate" />
                 <ScalarProperty Name="VaccineName" ColumnName="VaccineName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="BitirmeProjesiModel.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ContentMessage" ColumnName="ContentMessage" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -372,18 +384,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SurName" ColumnName="SurName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="BitirmeProjesiModel.Messages">
-              <MappingFragment StoreEntitySet="Messages">
-                <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
-                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
-                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ContentMessage" ColumnName="ContentMessage" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

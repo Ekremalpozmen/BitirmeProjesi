@@ -27,10 +27,10 @@ namespace BitirmeProjesi.Data
     
         public virtual DbSet<Animals> Animals { get; set; }
         public virtual DbSet<AnimalsVaccinations> AnimalsVaccinations { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<VetUsers> VetUsers { get; set; }
-        public virtual DbSet<Messages> Messages { get; set; }
     }
 }
