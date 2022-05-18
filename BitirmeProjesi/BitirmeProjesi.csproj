@@ -145,6 +145,7 @@
     <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\VetController.cs" />
@@ -866,6 +867,7 @@
     <Content Include="Views\Animals\_VaccineList.cshtml" />
     <Content Include="Views\Animals\_AddVaccine.cshtml" />
     <Content Include="Views\Vet\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
