@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BitirmeProjesi.ViewModels.User.UserModel;
 
 namespace BitirmeProjesi.Services.User
 {
@@ -77,7 +78,48 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
+        public ServiceCallResult EditPassword(EditPassword model, UserModel user)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
 
+            var currentUser = _context.Users.FirstOrDefault(x => x.Id == user.Id);
 
+            var userPassword = currentUser.Password;
+
+            if (userPassword == model.OldPassword)
+            {
+                if (model.NewPassword == model.NewPasswordAgain)
+                {
+                    currentUser.Password = model.NewPassword;
+                }
+                else
+                {
+                    callResult.ErrorMessages.Add("Şifreler Uyuşmuyor");
+                    return callResult;
+                }
+            }
+            else
+            {
+                callResult.ErrorMessages.Add("Eski Şifre Yanlış");
+                return callResult;
+            }
+
+            using (var dbtransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbtransaction.Commit();
+                    callResult.Success = true;
+                    callResult.SuccessMessages.Add("Şifre Değiştirildi");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
     }
 }

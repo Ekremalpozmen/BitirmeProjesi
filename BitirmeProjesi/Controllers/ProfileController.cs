@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using static BitirmeProjesi.ViewModels.User.UserModel;
 
 namespace BitirmeProjesi.Controllers
 {
@@ -42,6 +43,15 @@ namespace BitirmeProjesi.Controllers
         {
             return PartialView("~/Views/Profile/_EditPassword.cshtml");
         }
+
+        [HttpPost]
+        public ActionResult EditPassword(EditPassword model)
+        {
+            _profileService.EditPassword(model, CurrentUser);
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
