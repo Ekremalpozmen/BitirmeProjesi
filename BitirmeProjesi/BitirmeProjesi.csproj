@@ -870,6 +870,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\_EditProfile.cshtml" />
     <Content Include="Views\Profile\_EditPassword.cshtml" />
+    <Content Include="Views\Vet\VetProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

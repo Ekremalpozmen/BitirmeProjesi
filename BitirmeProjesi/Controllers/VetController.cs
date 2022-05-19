@@ -23,6 +23,12 @@ namespace BitirmeProjesi.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> VetProfile(int vetId)
+        {
+            //var model = await _vetService.GetVetListViewModel();
+            return View( );
+        }
+
 
     }
 }

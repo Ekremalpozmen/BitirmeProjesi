@@ -35,5 +35,30 @@ namespace BitirmeProjesi.Services.User
                                  }).ToListAsync();
             return vetList;
         }
+
+
+        //public async Task<List<VetListViewModel>> Get()
+        //{
+        //    var vetList = await (from b in _context.VetUsers
+        //                         select new VetListViewModel()
+        //                         {
+        //                             Id = (int)b.Id,
+        //                             Name = b.Name,
+        //                             Surname = b.SurName,
+        //                             Email = b.Email,
+        //                             Expertise = b.Expertise,
+        //                             Gender = b.Gender,
+        //                             GraduationDate = b.GraduationDate,
+        //                             University = b.University,
+        //                             WorkShopName = b.WorkShopName,
+        //                             UserName = b.UserName,
+        //                         }).ToListAsync();
+        //    return vetList;
+        //}
+
+
+
+
+
     }
 }
