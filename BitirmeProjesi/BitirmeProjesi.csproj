@@ -868,6 +868,7 @@
     <Content Include="Views\Animals\_AddVaccine.cshtml" />
     <Content Include="Views\Vet\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

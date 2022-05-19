@@ -1,4 +1,5 @@
-﻿using BitirmeProjesi.Services.User;
+﻿using BitirmeProjesi.Controllers.Abstract;
+using BitirmeProjesi.Services.User;
 using BitirmeProjesi.ViewModels.User;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 namespace BitirmeProjesi.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly AddQuestionService _addQuestionService;
         public HomeController(AddQuestionService questionService)

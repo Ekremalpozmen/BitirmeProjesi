@@ -79,11 +79,11 @@
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                 <div class="drop-heading">
                                                     <div class="text-center">
-                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold">İsim Soyisim</h5>
+                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold">@CurrentUser.FullName </h5>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown-divider m-0"></div>
-                                                <a class="dropdown-item" href="@Url.Action("Index","Profile")">
+                                                <a class="dropdown-item" href="@Url.Action("Index","Profile",routeValues: new {Area = string.Empty,userId = HttpContext.Current.User.Identity.Name})">
                                                     <i class="dropdown-icon fe fe-user"></i> Profil
                                                 </a>
                                                 <a class="dropdown-item" href="login.html">
