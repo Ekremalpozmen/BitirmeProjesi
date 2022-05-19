@@ -38,5 +38,10 @@ namespace BitirmeProjesi.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult EditPassword(int userId)
+        {
+            return PartialView("~/Views/Profile/_EditPassword.cshtml");
+        }
+
     }
 }

@@ -22,7 +22,14 @@
                 </div>
                 <div>
                     <a class="mb-1 text-dark fw-semibold">Profil Bilgileri</a> <br />
-                    <a class="  text-dark fw-semibold">Şifre Ayarları</a>
+                    <a data-modal-form="true"
+                       data-modal-size="modal-xl"
+                       data-modal-title="Şifre Güncelle"
+                       href="@Url.Action("EditPassword","Profile",routeValues: new {Area = string.Empty,userId = Model.Id})"
+                       class="mb-1 text-dark fw-semibold"
+                       style="display:table-caption">
+                        Şifre Güncelle
+                    </a>
                 </div>
             </div>
         </div>
@@ -34,7 +41,7 @@
                 <div class="btn-profile">
                     <a data-modal-form="true"
                        data-modal-size="modal-xl"
-                       data-modal-title="Hayvan Ekle"
+                       data-modal-title="Profili Düzenle"
                        href="@Url.Action("EditProfile","Profile",routeValues: new {Area = string.Empty,userId = Model.Id})"
                        class="btn btn-primary mt-1 mb-1"
                        style="display:table-caption">

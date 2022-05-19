@@ -869,6 +869,7 @@
     <Content Include="Views\Vet\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\_EditProfile.cshtml" />
+    <Content Include="Views\Profile\_EditPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
