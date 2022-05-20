@@ -31,6 +31,7 @@ namespace BitirmeProjesi.Data
         public string Expertise { get; set; }
         public Nullable<System.DateTime> GraduationDate { get; set; }
         public string WorkShopName { get; set; }
+        public string PhoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Questions> Questions { get; set; }

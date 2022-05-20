@@ -86,6 +86,7 @@
           <Property Name="Expertise" Type="nvarchar" MaxLength="350" />
           <Property Name="GraduationDate" Type="datetime" />
           <Property Name="WorkShopName" Type="nvarchar" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_AnimalsVaccinations_Animals">
           <End Role="Animals" Type="Self.Animals" Multiplicity="0..1" />
@@ -256,6 +257,7 @@
           <Property Name="GraduationDate" Type="DateTime" Precision="3" />
           <Property Name="WorkShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Questions" Relationship="BitirmeProjesiModel.FK_Questions_VetUser" FromRole="VetUsers" ToRole="Questions" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_AnimalsVaccinations_Animals">
           <End Type="BitirmeProjesiModel.Animals" Role="Animals" Multiplicity="0..1" />
@@ -374,6 +376,7 @@
           <EntitySetMapping Name="VetUsers">
             <EntityTypeMapping TypeName="BitirmeProjesiModel.VetUsers">
               <MappingFragment StoreEntitySet="VetUsers">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="WorkShopName" ColumnName="WorkShopName" />
                 <ScalarProperty Name="GraduationDate" ColumnName="GraduationDate" />
                 <ScalarProperty Name="Expertise" ColumnName="Expertise" />
