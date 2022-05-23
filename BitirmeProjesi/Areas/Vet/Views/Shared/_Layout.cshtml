@@ -86,7 +86,7 @@
                                                 <a class="dropdown-item" href="@Url.Action("Index","Profile",routeValues: new {Area = string.Empty,userId = HttpContext.Current.User.Identity.Name})">
                                                     <i class="dropdown-icon fe fe-user"></i> Profil
                                                 </a>
-                                                <a class="dropdown-item" href="@Url.Action("Logout","Security")">
+                                                <a class="dropdown-item" href="@Url.Action("Logout","Security",new { Area = "Vet" })">
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Çıkış Yap
                                                 </a>
                                             </div>
