@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitirme Projesi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- STYLE CSS -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/dark-style.css" rel="stylesheet" />
+    <link href="~/assets/css/transparent-style.css" rel="stylesheet">
+    <link href="~/assets/css/skin-modes.css" rel="stylesheet" />
+    <!--- FONT-ICONS CSS -->
+    <link href="~/assets/css/icons.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <!-- COLOR SKIN CSS -->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="~/assets/colors/color1.css" />
+
+</head>
+
+<body class="app sidebar-mini ltr">
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+            <!-- app-Header -->
+            <div class="app-header header sticky">
+                <div class="container-fluid main-container">
+                    <div class="d-flex">
+                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
+                        <!-- sidebar-toggle-->
+                        <a class="logo-horizontal " href="index.html">
+                        </a>
+
+                        <div class="d-flex order-lg-2 ms-auto header-right-icons">
+                            <div class="dropdown d-none">
+                                <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
+                                    <i class="fe fe-search"></i>
+                                </a>
+                                <div class="dropdown-menu header-search dropdown-menu-start">
+                                    <div class="input-group w-100 p-2">
+                                        <input type="text" class="form-control" placeholder="Arama....">
+
+                                        <div class="input-group-text btn btn-primary">
+                                            <i class="fe fe-search" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="navbar navbar-collapse responsive-navbar p-0">
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                                    <div class="d-flex order-lg-2">
+                                        <div class="dropdown d-lg-none d-flex">
+                                            <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
+                                                <i class="fe fe-search"></i>
+                                            </a>
+                                            <div class="dropdown-menu header-search dropdown-menu-start">
+                                                <div class="input-group w-100 p-2">
+                                                    <input type="text" class="form-control" placeholder="Arama....">
+                                                    <div class="input-group-text btn btn-primary">
+                                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown d-flex">
+                                            <a class="nav-link icon full-screen-link nav-link-bg">
+                                                <i class="fe fe-minimize fullscreen-button"></i>
+                                            </a>
+                                        </div>
+                                        <!-- FULL-SCREEN -->
+                                        <div class="dropdown d-flex profile-1">
+                                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
+                                                <i class="bi bi-person-circle  profile-user brround cover-image" aria-hidden="true"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <div class="drop-heading">
+                                                    <div class="text-center">
+                                                        <h5 class="text-dark mb-0 fs-14 fw-semibold">ad soyad </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown-divider m-0"></div>
+                                                <a class="dropdown-item" href="@Url.Action("Index","Profile",routeValues: new {Area = string.Empty,userId = HttpContext.Current.User.Identity.Name})">
+                                                    <i class="dropdown-icon fe fe-user"></i> Profil
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("Logout","Security")">
+                                                    <i class="dropdown-icon fe fe-alert-circle"></i> Çıkış Yap
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /app-Header -->
+            <!--APP-SIDEBAR-->
+            <div class="sticky">
+                <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+                <div class="app-sidebar">
+                    <div class="side-header">
+                        <a class="header-brand1" href="index.html">
+                            <h3>Bitirme Projesi</h3>
+                        </a>
+                        <!-- LOGO -->
+                    </div>
+                    <div class="main-sidemenu">
+                        <ul class="side-menu">
+                           
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="@Url.Action("Index","Question")"><i class="side-menu__icon fa fa-reply"></i><span class="side-menu__label">Sorularım</span></a>
+                            </li>
+                            
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="@Url.Action("Index","Vet")"><i class="side-menu__icon fa fa-users"></i><span class="side-menu__label">Veterinerler</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/APP-SIDEBAR-->
+            </div>
+
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+                        @RenderBody()
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+                </div>
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+
+            <!--app-content closed-->
+        </div>
+    </div>
+    <!-- JQUERY JS -->
+    <!--<script src="~/assets/js/jquery.min.js"></script>-->
+    <!-- CUSTOM MODAL FORM -->
+    <!-- BOOTSTRAP JS -->
+    <script src="~/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/bootstrap-confirmation/bootstrap-confirmation.js"></script>
+
+    <script src="~/Scripts/custom.ajax.form.js"></script>
+    <script src="~/Scripts/custom.modal.form.js"></script>
+    <script src="~/Scripts/custom.ajax.pager.js"></script>
+
+    <script src="~/Scripts/site.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- SPARKLINE JS-->
+    <script src="~/assets/js/jquery.sparkline.min.js"></script>
+
+    <!-- INPUT MASK JS-->
+    <script src="~/assets/plugins/input-mask/jquery.mask.min.js"></script>
+
+    <!-- SIDEBAR JS -->
+    <script src="~/assets/plugins/sidebar/sidebar.js"></script>
+
+    <!-- SIDE-MENU JS -->
+    <script src="~/assets/plugins/sidemenu/sidemenu.js"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="~/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+    <script src="~/assets/plugins/p-scroll/pscroll.js"></script>
+    <script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>
+
+    <!-- Internal Chat js-->
+    <script src="~/assets/js/chat.js"></script>
+
+
+    <!-- SWEET-ALERT JS -->
+    <script src="~/assets/plugins/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/assets/js/sweet-alert.js"></script>
+
+    <!-- DATA TABLE JS -->
+    <script src="~/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="~/assets/js/table-data.js"></script>
+
+    <!-- SELECT2 JS -->
+    <script src="~/assets/plugins/select2/select2.full.min.js"></script>
+    <script src="~/assets/js/select2.js"></script>
+
+    <!-- Color Theme js -->
+    <script src="~/assets/js/themeColors.js"></script>
+
+    <!-- Sticky js -->
+    <script src="~/assets/js/sticky.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="~/assets/js/custom.js"></script>
+
+    @*<script>
+        $(document).ready(function () {
+            $('body').find('form[data-ajax-form="true"]').each(function () {
+                $(this).customAjaxForm();
+            });
+            $('#animalSearchForm').submit();
+        });
+    </script>*@
+
+</body>
+
+</html>

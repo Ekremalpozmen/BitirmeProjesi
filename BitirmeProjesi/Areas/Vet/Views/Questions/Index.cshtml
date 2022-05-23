@@ -1,18 +1,55 @@
 ﻿
+
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Vet/Views/Shared/_Layout.cshtml";
 }
+<script src="~/assets/js/jquery.min.js"></script>
+<br />
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-        <h1>questions</h1>
+<div class="row row-sm">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body ">
+                <h3 class="card-title">Sorular</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                        <thead>
+                            <tr>
+                                <th class="wd-15p border-bottom-0">Soru Başlığı</th>
+                                <th class="wd-15p border-bottom-0">Kullanıcı Adı</th>
+                                <th class="wd-15p border-bottom-0">Detay Gör</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var item in Model)
+                                {
+                                    <tr id="@item.Id">
+                                        <td>@item.Title</td>
+                                        <td>@item.VetFullName</td>
+                                        <td>
+                                            <a data-modal-form="true"
+                                               data-modal-size="modal-xl"
+                                               data-modal-title="Mesajlaş"
+                                               data-id="@item.Id"
+                                               href="@Url.Action("MessagesDetail", "Message", routeValues: new {Area = string.Empty,questionId = item.Id})"
+                                               data-hook-beforeunload="true"
+                                               class="btn btn-secondary mt-2 ">
+                                                Detay Gör
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div data-id="@item.Id" class="rating-stars block" id="rating-@item.Id" data-stars="@item.RatingScore">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>

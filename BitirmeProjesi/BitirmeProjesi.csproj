@@ -826,6 +826,9 @@
     <Content Include="Areas\Vet\Views\Security\Login.cshtml" />
     <Content Include="Areas\Vet\Views\Security\Register.cshtml" />
     <Content Include="Areas\Vet\Views\Questions\Index.cshtml" />
+    <Content Include="Areas\Vet\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Vet\Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
+    <Content Include="Areas\Vet\Views\Shared\Error.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
     <Content Include="Scripts\custom.ajax.pager.js" />
@@ -883,7 +886,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Vet\Data\" />
-    <Folder Include="Areas\Vet\Views\Shared\" />
     <Folder Include="Areas\Vet\Views\VetBase\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
