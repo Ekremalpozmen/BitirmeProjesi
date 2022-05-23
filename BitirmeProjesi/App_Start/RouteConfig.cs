@@ -16,7 +16,8 @@ namespace BitirmeProjesi
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Security", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Security", action = "Login", id = UrlParameter.Optional },
+                namespaces: new string[] { "BitirmeProjesi.Controllers" }
             );
         }
     }

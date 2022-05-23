@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
+    <title>Veteriner Girişi</title>
 </head>
 <body>
 
@@ -17,9 +17,9 @@
         <div class="form-container sign-in-container">
             @using (Html.BeginForm("Login", "Security", FormMethod.Post, new { data_ajax = "false" }))
             {
-                @Html.ValidationSummary()             
+                @Html.ValidationSummary()
                 <form action="#">
-                    <h1>Giriş Yap</h1>
+                    <h1>Veteriner <br />Giriş Yap</h1>
                     <br />
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adı", required = "required" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Şifre giriniz", required = "required" })
@@ -43,15 +43,15 @@
                     <p>Hemen Bize Katıl</p>
                     <button class="ghost" id="signUp">Kayıt Ol</button>
                     <br />
-                    <a href="@Url.Action("Login","Security",new {Area="Vet"})">
-                        <button class="ghost" id="vet">Veteriner Girişi</button>
+                    <a class="ghost" href="@Url.Action("Login","Security",new {Area=""})">
+                        <button class="ghost" id="vet">Kullanıcı Girişi</button>
                     </a>
-                    
+
                 </div>
             </div>
         </div>
         <div class="form-container sign-up-container">
-            @{ Html.RenderAction("Register", "Security"); }
+            @*@{ Html.RenderAction("Register", "Security"); }*@
         </div>
     </div>
 </body>
