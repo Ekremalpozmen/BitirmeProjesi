@@ -25,7 +25,7 @@ namespace BitirmeProjesi.Areas.Vet.Controllers.Abstract
                 using (BitirmeProjesiEntities db = new BitirmeProjesiEntities())
                 {
                     var contextUserId = Convert.ToInt32(System.Web.HttpContext.Current.User.Identity.Name);
-                    var user = db.Users.FirstOrDefault(x => x.Id == contextUserId);
+                    var user = db.VetUsers.FirstOrDefault(x => x.Id == contextUserId);
 
                     if (user != null)
                     {

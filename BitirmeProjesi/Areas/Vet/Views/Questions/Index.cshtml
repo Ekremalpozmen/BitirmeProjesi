@@ -1,4 +1,4 @@
-﻿
+﻿@model List<BitirmeProjesi.ViewModels.Vet.QuestionListViewModel> 
 
 @{
     ViewBag.Title = "Index";
@@ -24,11 +24,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var item in Model)
+                            @foreach (var item in Model)
                                 {
                                     <tr id="@item.Id">
                                         <td>@item.Title</td>
-                                        <td>@item.VetFullName</td>
+                                        <td>@item.UserFullName</td>
                                         <td>
                                             <a data-modal-form="true"
                                                data-modal-size="modal-xl"
@@ -40,12 +40,8 @@
                                                 Detay Gör
                                             </a>
                                         </td>
-                                        <td>
-                                            <div data-id="@item.Id" class="rating-stars block" id="rating-@item.Id" data-stars="@item.RatingScore">
-                                            </div>
-                                        </td>
                                     </tr>
-                                }*@
+                                }
                         </tbody>
                     </table>
                 </div>
