@@ -14,5 +14,11 @@ namespace BitirmeProjesi.Areas.Vet.Controllers
         {
             return View();
         }
+
+        [AllowAnonymous]
+        public PartialViewResult Register()
+        {
+            return PartialView();
+        }
     }
 }

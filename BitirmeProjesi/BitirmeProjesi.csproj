@@ -823,6 +823,7 @@
     <Content Include="assets\scss\_variables.scss" />
     <Content Include="Areas\Vet\Views\web.config" />
     <Content Include="Areas\Vet\Views\Security\Login.cshtml" />
+    <Content Include="Areas\Vet\Views\Security\Register.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
     <Content Include="Scripts\custom.ajax.pager.js" />
