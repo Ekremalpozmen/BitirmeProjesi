@@ -11,9 +11,9 @@
         <EntityTypeShape EntityType="BitirmeProjesiModel.Questions" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="BitirmeProjesiModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
         <EntityTypeShape EntityType="BitirmeProjesiModel.Users" Width="1.5" PointX="0.75" PointY="5.375" />
-        <EntityTypeShape EntityType="BitirmeProjesiModel.VetUsers" Width="1.5" PointX="0.75" PointY="1" />
         <AssociationConnector Association="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals" />
         <AssociationConnector Association="BitirmeProjesiModel.FK_Questions_User" />
+        <EntityTypeShape EntityType="BitirmeProjesiModel.VetUsers" Width="1.5" PointX="0.75" PointY="0.875" />
         <AssociationConnector Association="BitirmeProjesiModel.FK_Questions_VetUser" />
       </Diagram>
     </edmx:Diagrams>

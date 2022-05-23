@@ -65,6 +65,7 @@
     <Compile Include="User\AddQuestionService.cs" />
     <Compile Include="User\Security\SecurityService.cs" />
     <Compile Include="User\VetService.cs" />
+    <Compile Include="Vet\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitirmeProjesi.Data\BitirmeProjesi.Data.csproj">

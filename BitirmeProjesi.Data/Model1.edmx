@@ -156,7 +156,6 @@
           <EntitySet Name="Questions" EntityType="BitirmeProjesiModel.Questions" />
           <EntitySet Name="sysdiagrams" EntityType="BitirmeProjesiModel.sysdiagrams" />
           <EntitySet Name="Users" EntityType="BitirmeProjesiModel.Users" />
-          <EntitySet Name="VetUsers" EntityType="BitirmeProjesiModel.VetUsers" />
           <AssociationSet Name="FK_AnimalsVaccinations_Animals" Association="BitirmeProjesiModel.FK_AnimalsVaccinations_Animals">
             <End Role="Animals" EntitySet="Animals" />
             <End Role="AnimalsVaccinations" EntitySet="AnimalsVaccinations" />
@@ -165,6 +164,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Questions" EntitySet="Questions" />
           </AssociationSet>
+          <EntitySet Name="VetUsers" EntityType="BitirmeProjesiModel.VetUsers" />
           <AssociationSet Name="FK_Questions_VetUser" Association="BitirmeProjesiModel.FK_Questions_VetUser">
             <End Role="VetUsers" EntitySet="VetUsers" />
             <End Role="Questions" EntitySet="Questions" />
@@ -241,24 +241,6 @@
           <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Questions" Relationship="BitirmeProjesiModel.FK_Questions_User" FromRole="Users" ToRole="Questions" />
         </EntityType>
-        <EntityType Name="VetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="SurName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" />
-          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="University" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Expertise" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
-          <Property Name="GraduationDate" Type="DateTime" Precision="3" />
-          <Property Name="WorkShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Questions" Relationship="BitirmeProjesiModel.FK_Questions_VetUser" FromRole="VetUsers" ToRole="Questions" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
         <Association Name="FK_AnimalsVaccinations_Animals">
           <End Type="BitirmeProjesiModel.Animals" Role="Animals" Multiplicity="0..1" />
           <End Type="BitirmeProjesiModel.AnimalsVaccinations" Role="AnimalsVaccinations" Multiplicity="*" />
@@ -283,6 +265,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="VetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="University" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Expertise" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="GraduationDate" Type="DateTime" Precision="3" />
+          <Property Name="WorkShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Questions" Relationship="BitirmeProjesiModel.FK_Questions_VetUser" FromRole="VetUsers" ToRole="Questions" />
+        </EntityType>
         <Association Name="FK_Questions_VetUser">
           <End Type="BitirmeProjesiModel.VetUsers" Role="VetUsers" Multiplicity="0..1" />
           <End Type="BitirmeProjesiModel.Questions" Role="Questions" Multiplicity="*" />

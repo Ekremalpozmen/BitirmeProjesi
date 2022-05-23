@@ -26,6 +26,14 @@ namespace BitirmeProjesi
             container.Register(typeof(BitirmeProjesi.Services.User.AnimalsService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.VetService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.ProfileService), new PerRequestLifeTime());
+
+
+            //VET
+            container.Register(typeof(BitirmeProjesi.Services.Vet.SecurityService), new PerRequestLifeTime());
+
+
+
+
             container.EnableMvc();
         }
     }
