@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="dropdown-divider m-0"></div>
-                                                <a class="dropdown-item" href="@Url.Action("Index","Profile",routeValues: new {Area = string.Empty,userId = HttpContext.Current.User.Identity.Name})">
+                                                <a class="dropdown-item" href="@Url.Action("Index","Profile",routeValues: new {Area = "Vet", userId= HttpContext.Current.User.Identity.Name})">
                                                     <i class="dropdown-icon fe fe-user"></i> Profil
                                                 </a>
                                                 <a class="dropdown-item" href="@Url.Action("Logout","Security",new { Area = "Vet" })">
