@@ -23,10 +23,10 @@ namespace BitirmeProjesi.Areas.Vet.Controllers
             return View(model);
         }
 
-        //public ActionResult VetProfile(int vetId)
-        //{
-        //    var model = _vetService.GetVetProfile(vetId);
-        //    return View(model);
-        //}
+        public ActionResult VetProfile(int vetId)
+        {
+            var model = _vetService.GetVetProfile(vetId);
+            return View(model);
+        }
     }
 }

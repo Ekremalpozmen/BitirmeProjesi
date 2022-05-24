@@ -831,6 +831,7 @@
     <Content Include="Areas\Vet\Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
     <Content Include="Areas\Vet\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Vet\Views\Vet\Index.cshtml" />
+    <Content Include="Areas\Vet\Views\Vet\VetProfile.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
     <Content Include="Scripts\custom.ajax.pager.js" />
