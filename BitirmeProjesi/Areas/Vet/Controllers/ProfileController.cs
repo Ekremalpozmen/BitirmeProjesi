@@ -20,5 +20,9 @@ namespace BitirmeProjesi.Areas.Vet.Controllers
             var model = _profileService.GetProfile(userId);
             return View(model);
         }
+        public ActionResult EditPassword(int userId)
+        {
+            return PartialView("~/Areas/Vet/Views/Profile/_EditPassword.cshtml");
+        }
     }
 }
