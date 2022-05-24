@@ -24,5 +24,11 @@ namespace BitirmeProjesi.ViewModels.Vet
         public Nullable<System.DateTime> GraduationDate { get; set; }
         public string WorkShopName { get; set; }
         public string PhoneNumber { get; set; }
+        public class EditPassword
+        {
+            public string OldPassword { get; set; }
+            public string NewPassword { get; set; }
+            public string NewPasswordAgain { get; set; }
+        }
     }
 }

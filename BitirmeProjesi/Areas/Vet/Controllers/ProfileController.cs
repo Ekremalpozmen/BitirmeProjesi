@@ -1,10 +1,12 @@
 ﻿using BitirmeProjesi.Areas.Vet.Controllers.Abstract;
 using BitirmeProjesi.Services.Vet;
+using BitirmeProjesi.ViewModels.Vet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static BitirmeProjesi.ViewModels.Vet.VetModel;
 
 namespace BitirmeProjesi.Areas.Vet.Controllers
 {
@@ -23,6 +25,13 @@ namespace BitirmeProjesi.Areas.Vet.Controllers
         public ActionResult EditPassword(int userId)
         {
             return PartialView("~/Areas/Vet/Views/Profile/_EditPassword.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult EditPassword(EditPassword model )
+        {
+            _profileService.EditPassword(model, CurrentUser);
+            return RedirectToAction("Index");
         }
     }
 }
