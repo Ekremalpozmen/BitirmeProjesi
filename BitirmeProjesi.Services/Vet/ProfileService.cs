@@ -1,4 +1,5 @@
 ﻿using BitirmeProjesi.Data;
+using BitirmeProjesi.ViewModels.Vet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +15,25 @@ namespace BitirmeProjesi.Services.Vet
         {
             _context = context;
         }
-        //public UserModel GetProfile(int userId)
-        //{
-        //    var userProfile = _context.Users.FirstOrDefault(x => x.Id == userId);
-        //    var profile = new UserModel()
-        //    {
-        //        Id = userId,
-        //        Name = userProfile.Name,
-        //        SurName = userProfile.SurName,
-        //        Email = userProfile.Email,
-        //        Gender = (bool)userProfile.Gender,
-        //        UserName = userProfile.UserName,
-        //    };
 
-        //    return profile;
-        //}
+        public VetModel GetProfile(int userId)
+        {
+            var userProfile = _context.VetUsers.FirstOrDefault(x => x.Id == userId);
+            var profile = new VetModel()
+            {
+                Id = userId,
+                Name = userProfile.Name,
+                SurName = userProfile.SurName,
+                Email = userProfile.Email,
+                Gender = (bool)userProfile.Gender,
+                UserName = userProfile.UserName,
+                Expertise = userProfile.Expertise,
+                GraduationDate = userProfile.GraduationDate,
+                PhoneNumber = userProfile.PhoneNumber,
+                University = userProfile.University,
+                WorkShopName = userProfile.WorkShopName,
+            };
+            return profile;
+        }
     }
 }
