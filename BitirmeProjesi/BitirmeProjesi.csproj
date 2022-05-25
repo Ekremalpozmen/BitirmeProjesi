@@ -835,6 +835,7 @@
     <Content Include="Areas\Vet\Views\Vet\VetProfile.cshtml" />
     <Content Include="Areas\Vet\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Vet\Views\Profile\_EditPassword.cshtml" />
+    <Content Include="Areas\Vet\Views\Profile\_EditProfile.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
     <Content Include="Scripts\custom.ajax.pager.js" />

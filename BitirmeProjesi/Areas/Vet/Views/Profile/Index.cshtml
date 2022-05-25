@@ -28,8 +28,7 @@
                        data-modal-size="modal-xl"
                        data-modal-title="Şifre Güncelle"
                        href="@Url.Action("EditPassword","Profile",routeValues: new {Area = "Vet",userId = Model.Id})"
-                       class="mb-1 text-dark fw-semibold"
-                       style="display:table-caption">
+                       class="mb-1 text-dark fw-semibold">
                         Şifre Güncelle
                     </a>
                 </div>
@@ -44,7 +43,7 @@
                     <a data-modal-form="true"
                        data-modal-size="modal-xl"
                        data-modal-title="Profili Düzenle"
-                       href="@Url.Action("EditProfile","Profile",routeValues: new {Area = string.Empty,userId = Model.Id})"
+                       href="@Url.Action("EditProfile","Profile",routeValues: new {Area = "Vet",vetId = Model.Id})"
                        class="btn btn-primary mt-1 mb-1"
                        style="display:table-caption">
                         Profili Düzenle
