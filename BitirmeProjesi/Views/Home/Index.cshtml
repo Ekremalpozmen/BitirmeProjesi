@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
 <br />
 <div class="row">
     <div class="col-md-12 col-lg-12">
@@ -33,5 +32,12 @@
         </div>
     </div>
 </div>
-    <script src="~/assets/plugins/notify/js/sample.js"></script>
 
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">toastr.success("@TempData["Message"]");</script>
+    }
+}

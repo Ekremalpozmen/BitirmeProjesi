@@ -24,19 +24,13 @@ namespace BitirmeProjesi.Controllers
             ViewBag.VetList = await _addQuestionService.GetVetListViewAsync();
             return View();
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult AddQuestion(QuestionViewModel model)
         {
             var result = _addQuestionService.AddQuestion(model);
-            if (result.Success)
-            {
-                return Json(new { success = result.Success, item = "Soru Gönderildi" }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(new { success = result.Success, item = result.ErrorMessages.FirstOrDefault() }, JsonRequestBehavior.AllowGet);
-            }
+            TempData["Message"] = "Soru Başarılı Şekilde Gönderildi";
+            return RedirectToAction("Index");
         }
     }
 }
