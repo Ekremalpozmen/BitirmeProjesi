@@ -9,14 +9,14 @@ using System.Web.Mvc;
 
 namespace BitirmeProjesi.Controllers
 {
-    public class VetController : BaseController
+    [Authorize]
+    public class UserVetController : BaseController
     {
         private readonly VetService _vetService;
-        public VetController(VetService vetService)
+        public UserVetController(VetService vetService)
         {
             _vetService = vetService;
         }
-
         public async Task<ActionResult> Index()
         {
             var model = await _vetService.GetVetListViewModel();

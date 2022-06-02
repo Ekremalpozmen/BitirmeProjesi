@@ -17,9 +17,9 @@ namespace BitirmeProjesi.Services.User
             _context = context;
         }
 
-        public async Task<List<VetListViewModel>> GetVetListViewModel()
+        public   Task<List<VetListViewModel>> GetVetListViewModel()
         {
-            var vetList = await (from b in _context.VetUsers
+            var vetList =   (from b in _context.VetUsers
                                  select new VetListViewModel()
                                  {
                                      Id = (int)b.Id,

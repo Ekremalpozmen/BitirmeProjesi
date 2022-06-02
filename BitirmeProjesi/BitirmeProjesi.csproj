@@ -154,7 +154,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
-    <Compile Include="Controllers\VetController.cs" />
+    <Compile Include="Controllers\UserVetController.cs" />
     <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -882,11 +882,11 @@
     <Content Include="Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
     <Content Include="Views\Animals\_VaccineList.cshtml" />
     <Content Include="Views\Animals\_AddVaccine.cshtml" />
-    <Content Include="Views\Vet\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\_EditProfile.cshtml" />
     <Content Include="Views\Profile\_EditPassword.cshtml" />
-    <Content Include="Views\Vet\VetProfile.cshtml" />
+    <Content Include="Views\UserVet\Index.cshtml" />
+    <Content Include="Views\UserVet\VetProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
