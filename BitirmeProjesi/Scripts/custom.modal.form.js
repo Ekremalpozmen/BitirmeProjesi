@@ -182,6 +182,7 @@
 
             }).done(function (result) {
                 if (result.success) {
+                    alert("asd");
                     modalWindow.modal('hide');
                     if (triggerOnSuccess) {
                         $(that).trigger('onSuccess', result.item);

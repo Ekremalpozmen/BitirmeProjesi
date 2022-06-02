@@ -19,130 +19,129 @@ namespace BitirmeProjesi.Controllers
             _animalsService = animalService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(AnimalsViewModel model)
         {
-            return View();
+            var result = _animalsService.AnimalsList(model, CurrentUser);
+            return View(result);
         }
-      
-        public ActionResult AnimalList(AnimalSearchViewModel searchViewModel, int? page)
-        {
-            var currentPageIndex = page - 1 ?? 0;
 
-            var result = _animalsService.GetAnimalListIQueryable(searchViewModel, CurrentUser)
-                .OrderBy(p => p.Name)
-                .ToPagedList(currentPageIndex, 10);
+        //public ActionResult AnimalList(AnimalSearchViewModel searchViewModel, int? page)
+        //{
+        //    var currentPageIndex = page - 1 ?? 0;
 
-            ModelState.Clear();
-            return new ContentResult
-            {
-                ContentType = "application/json",
-                Content = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue }.Serialize(new
-                {
-                    success = true,
-                    responseText = RenderPartialViewToString("~/Views/Animals/AnimalList.cshtml", result)
-                })
-            };
-        }
+        //    var result = _animalsService.GetAnimalListIQueryable(searchViewModel, CurrentUser)
+        //        .OrderBy(p => p.Name)
+        //        .ToPagedList(currentPageIndex, 10);
+
+        //    ModelState.Clear();
+        //    return new ContentResult
+        //    {
+        //        ContentType = "application/json",
+        //        Content = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue }.Serialize(new
+        //        {
+        //            success = true,
+        //            responseText = RenderPartialViewToString("~/Views/Animals/AnimalList.cshtml", result)
+        //        })
+        //    };
+        //}
 
         public ActionResult AddAnimal()
         {
             return PartialView("~/Views/Animals/_AddAnimal.cshtml");
         }
 
-        [HttpPost]
-        public async Task<ActionResult> AddAnimal(AnimalListViewModel model)
-        {
+        //[HttpPost]
+        //public async Task<ActionResult> AddAnimal(AnimalsViewModel model)
+        //{
 
-            var callResult = await _animalsService.AddAnimalsAsync(model, CurrentUser);
-            if (callResult.Success)
-            {
+        //    var callResult = await _animalsService.AddAnimalsAsync(model, CurrentUser);
+        //    if (callResult.Success)
+        //    {
 
-                ModelState.Clear();
-                var animalId = (int)callResult.Item;
-                var viewModel = _animalsService.GetAnimalListViewAsync(animalId, CurrentUser).ConfigureAwait(false);
+        //        ModelState.Clear();
+        //        var animalIds = callResult.Item;
+        //        var animalId = Convert.ToInt32(animalIds);
+        //        var viewModel = _animalsService.GetAnimalListViewAsync(animalId, CurrentUser).ConfigureAwait(false);
 
-                var jsonResult = Json(
-                    new
-                    {
-                        success = true,
-                        warningMessages = callResult.WarningMessages,
-                        successMessages = callResult.SuccessMessages,
-                        responseText = RenderPartialViewToString("~/Views/Animals/DisplayTemplates/AnimalListViewModel.cshtml", viewModel),
-                        item = viewModel
-                    });
-                jsonResult.MaxJsonLength = int.MaxValue;
-                return jsonResult;
-            }
-            foreach (var error in callResult.ErrorMessages)
-            {
-                ModelState.AddModelError("", error);
-            }
-            return Json(
-                new
-                {
-                    success = false,
-                    errorMessages = callResult.ErrorMessages,
-                    responseText = RenderPartialViewToString("~/Views/Animals/_AddAnimal.cshtml", model)
-                });
+        //        var jsonResult = Json(
+        //            new
+        //            {
+        //                success = true,
+        //                warningMessages = callResult.WarningMessages,
+        //                successMessages = callResult.SuccessMessages,
+        //                responseText = RenderPartialViewToString("~/Views/Animals/DisplayTemplates/AnimalListViewModel.cshtml", viewModel),
+        //                item = viewModel
+        //            });
+        //        jsonResult.MaxJsonLength = int.MaxValue;
+        //        return jsonResult;
+        //    }
+        //    foreach (var error in callResult.ErrorMessages)
+        //    {
+        //        ModelState.AddModelError("", error);
+        //    }
+        //    return Json(
+        //        new
+        //        {
+        //            success = false,
+        //            errorMessages = callResult.ErrorMessages,
+        //            responseText = RenderPartialViewToString("~/Views/Animals/_AddAnimal.cshtml", model)
+        //        });
 
-        }
+        //}
 
 
         public async Task<ActionResult> VaccineList(int animalId)
         {
             var model = await _animalsService.GetVaccineListViewModel(animalId);
 
-        ViewBag.animalId= animalId;
+            ViewBag.animalId = animalId;
 
-            return PartialView("~/Views/Animals/_VaccineList.cshtml",model);
+            return PartialView("~/Views/Animals/_VaccineList.cshtml", model);
         }
 
         public ActionResult AddVaccine(int animalId)
         {
-            ViewBag.AnimalId=animalId;
+            ViewBag.AnimalId = animalId;
             return PartialView("~/Views/Animals/_AddVaccine.cshtml");
         }
 
-        [HttpPost]
-        public async Task<ActionResult> AddVaccine(VaccineListViewModel model)
-        {
+        //[HttpPost]
+        //public async Task<ActionResult> AddVaccine(VaccineListViewModel model)
+        //{
 
-            var callResult = await _animalsService.AddVaccineAsync(model, CurrentUser);
-            if (callResult.Success)
-            {
+        //    var callResult = await _animalsService.AddVaccineAsync(model, CurrentUser);
+        //    if (callResult.Success)
+        //    {
 
-                ModelState.Clear();
-                var animalId = (int)callResult.Item;
-                var viewModel = _animalsService.GetAnimalListViewAsync(animalId, CurrentUser).ConfigureAwait(false);
+        //        ModelState.Clear();
+        //        var animalId = (int)callResult.Item;
+        //        var viewModel = _animalsService.GetAnimalListViewAsync(animalId, CurrentUser).ConfigureAwait(false);
 
-                var jsonResult = Json(
-                    new
-                    {
-                        success = true,
-                        warningMessages = callResult.WarningMessages,
-                        successMessages = callResult.SuccessMessages,
-                        responseText = RenderPartialViewToString("~/Views/Animals/DisplayTemplates/AnimalListViewModel.cshtml", viewModel),
-                        item = viewModel
-                    });
-                jsonResult.MaxJsonLength = int.MaxValue;
-                return jsonResult;
-            }
-            foreach (var error in callResult.ErrorMessages)
-            {
-                ModelState.AddModelError("", error);
-            }
-            return Json(
-                new
-                {
-                    success = false,
-                    errorMessages = callResult.ErrorMessages,
-                    responseText = RenderPartialViewToString("~/Views/Animals/_AddVaccine.cshtml", model)
-                });
+        //        var jsonResult = Json(
+        //            new
+        //            {
+        //                success = true,
+        //                warningMessages = callResult.WarningMessages,
+        //                successMessages = callResult.SuccessMessages,
+        //                responseText = RenderPartialViewToString("~/Views/Animals/DisplayTemplates/AnimalListViewModel.cshtml", viewModel),
+        //                item = viewModel
+        //            });
+        //        jsonResult.MaxJsonLength = int.MaxValue;
+        //        return jsonResult;
+        //    }
+        //    foreach (var error in callResult.ErrorMessages)
+        //    {
+        //        ModelState.AddModelError("", error);
+        //    }
+        //    return Json(
+        //        new
+        //        {
+        //            success = false,
+        //            errorMessages = callResult.ErrorMessages,
+        //            responseText = RenderPartialViewToString("~/Views/Animals/_AddVaccine.cshtml", model)
+        //        });
 
-        }
-
-
-
+        //}
 
 
 

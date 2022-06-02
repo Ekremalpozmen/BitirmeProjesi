@@ -1,10 +1,11 @@
-﻿@model  BitirmeProjesi.ViewModels.User.AnimalSearchViewModel
+﻿@model  List<BitirmeProjesi.ViewModels.User.AnimalsViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
+
 
 
 <div class="row row-sm">
@@ -14,69 +15,68 @@
                 <h3 class="card-title">Hayvanlarım</h3>
                 <a data-modal-form="true"
                    data-modal-size="modal-xl"
-                   data-modal-title="Hayvan Ekle"
-                   href="@Url.Action("AddAnimal","Animals")"
+                   data-modal-title="  Hayvan Ekle"
+                   href="@Url.Action("AddAnimal","Animals", routeValues: new {Area = string.Empty})"
+                   data-hook-beforeunload="true"
                    class="btn btn-secondary mt-2 "
                    style="display:table-caption">
                     Hayvan Ekle
                 </a>
             </div>
             <div class="card-body">
-                @using (Html.BeginForm("AnimalList", "Animals", null, FormMethod.Post, new { role = "form", id = "animalSearchForm", data_ajax_form = "true", data_target_container = "#animalListContainer" }))
-                {
-                    @*<div class="main-header-center ms-3 d-none d-lg-block">
-                            @Html.TextBoxFor(m=>m.Name, new { @class = "form-control", placeholder = "Hayvan ara"   })
-                            <button class="btn  pt-2"><i class="fe fe-search" aria-hidden="true"></i></button>
-                        </div>*@
-                    <div class="btn-group float-lg-end" style="margin-bottom: 10px;" role="group">
-                        <button type="submit" class="btn btn-sm btn-white">Ara</button>
-                        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control form-control-sm", placeholder = "Hayvan Ara" })
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                        <thead>
+                            <tr>
+                                <th>Adı</th>
+                                <th>Cinsi</th>
+                                <th>Doğum Tarihi</th>
+                                <th>Cinsiyeti</th>
+                                <th>Aşı Bilgileri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
 
-                }
-                <div>
-                    <div id="animalListContainer"></div>
+                                <tr class="master-row">
+
+                                    <td>@item.Name</td>
+                                    <td>
+                                        @item.Type
+                                    </td>
+                                    <td>
+                                        @item.Birthdate
+                                    </td>
+                                    <td>
+                                        @if (item.Gender == true)
+                                        {
+                                            <span>Erkek</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Dişi</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a data-modal-form="true"
+                                           data-modal-size="modal-lg"
+                                           data-modal-title="Son Aşılar"
+                                           data-id="@item.Id"
+                                           href="@Url.Action("VaccineList", "Animals", routeValues: new {Area = string.Empty, animalId = item.Id})">
+                                            Detay
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-@*<div class="row">
-        <div class="col-xs-12">
-            <div class="box box-solid">
-                <div class="box-body">
-                    @using (Html.BeginForm("AnimalList", "Animals", new { Area = "" }, FormMethod.Post, new { role = "form", id = "animalSearchForm", data_ajax_form = "true", data_target_container = "#AnimalListContainer" }))
-                    {
-                        <h1>AAS</h1>
-                        <div class="row">
-                            <div class="form-group form-group-sm col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                <h1>AAssS</h1>
-
-                            </div>
-
-                            <div class="form-group form-group-sm col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
-                                <div class="input-group input-group-sm">
-                                    <span class="input-group-addon as-label">
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="form-group form-group-sm col-xs-12 col-sm-4 col-sm-push-3 col-md-4 col-md-push-3">
-                                <div class="input-group">
-                                    <button type='submit' class="btn btn-sm btn-default btn-block"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    <div>
-                        <div id="AnimalListContainer"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
 
 
