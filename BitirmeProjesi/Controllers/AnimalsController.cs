@@ -59,45 +59,18 @@ namespace BitirmeProjesi.Controllers
             return PartialView("~/Views/Animals/_AddVaccine.cshtml");
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult> AddVaccine(VaccineListViewModel model)
-        //{
-
-        //    var callResult = await _animalsService.AddVaccineAsync(model, CurrentUser);
-        //    if (callResult.Success)
-        //    {
-
-        //        ModelState.Clear();
-        //        var animalId = (int)callResult.Item;
-        //        var viewModel = _animalsService.GetAnimalListViewAsync(animalId, CurrentUser).ConfigureAwait(false);
-
-        //        var jsonResult = Json(
-        //            new
-        //            {
-        //                success = true,
-        //                warningMessages = callResult.WarningMessages,
-        //                successMessages = callResult.SuccessMessages,
-        //                responseText = RenderPartialViewToString("~/Views/Animals/DisplayTemplates/AnimalListViewModel.cshtml", viewModel),
-        //                item = viewModel
-        //            });
-        //        jsonResult.MaxJsonLength = int.MaxValue;
-        //        return jsonResult;
-        //    }
-        //    foreach (var error in callResult.ErrorMessages)
-        //    {
-        //        ModelState.AddModelError("", error);
-        //    }
-        //    return Json(
-        //        new
-        //        {
-        //            success = false,
-        //            errorMessages = callResult.ErrorMessages,
-        //            responseText = RenderPartialViewToString("~/Views/Animals/_AddVaccine.cshtml", model)
-        //        });
-
-        //}
-
-
-
+        [HttpPost]
+        public async Task<ActionResult> AddVaccine(VaccineListViewModel model)
+        {
+            var callResult = await _animalsService.AddVaccineAsync(model, CurrentUser);
+            
+            return Json(
+                new
+                {
+                    success = false,
+                    errorMessages = callResult.ErrorMessages,
+                    responseText = RenderPartialViewToString("~/Views/Animals/_AddVaccine.cshtml", model)
+                });
+        }
     }
 }
