@@ -1,5 +1,4 @@
-﻿
-<div>
+﻿<!--<div>
     <div class="row row-cards">
         <div class="col-xl-12">
             <div class="card">
@@ -15,15 +14,15 @@
 
                                     </div>
                                     <!-- main-chat-header -->
-                                    <div class="main-chat-body flex-2" id="ChatBody">
+<!--<div class="main-chat-body flex-2" id="ChatBody">
                                         <div class="content-inner">
-                                            
+
                                             <div class="media chat-left">
                                                 <div class="media-body">
                                                     <div class="main-msg-wrapper">
                                                         Maecenas tempus, tellus eget condimentum rhoncus
                                                     </div>
-                                                  
+
                                                     <div>
                                                         <span>10:12 am</span> <a href=""><i class="icon ion-android-more-horizontal"></i></a>
                                                     </div>
@@ -61,7 +60,7 @@
         </div>
     </div>
 </div>
-<hr />
+<hr />-->
 @*<div class="form-group form-group-sm row">
         <div class="col-xs-12">
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal"><span style="color: white" class="fa fa-times"></span>&nbsp;&nbsp;Vazgeç</button>
@@ -69,12 +68,51 @@
         </div>
     </div>*@
 <div class="clearfix"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>-->
 <!-- Star Rating Js-->
 <!-- Perfect SCROLLBAR JS-->
-<script src="~/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+<!--<script src="~/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
 <script src="~/assets/plugins/p-scroll/pscroll.js"></script>
-<script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>
-
+<script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>-->
 <!-- Internal Chat js-->
-<script src="~/assets/js/chat.js"></script>
+<!--<script src="~/assets/js/chat.js"></script>-->
+
+@{Layout = null;}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
+    <script src="~/SignalR/Hubs"></script>
+    <script>
+        $(function () {
+            var chat = $.connection.chatHub;
+            var $username = $('#txtUsername');
+            var $message = $('#txtMessage');
+            var $messages = $('#messages');
+            $message.focus();
+            chat.client.sendMessage = function (name, message) {
+                $messages.append('<li><strong>' + name + '</strong>: ' + message + '</li>');
+            };
+            $.connection.hub.start().done(function () {
+                $('#btnSendMessage').click(function () {
+
+                    chat.server.send($username.val(), $message.val());
+
+                    $message.val('').focus();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <label for="txtUserName">Kullanıcı: </label> @Html.TextBox("txtUsername")
+        <br />
+        <label for="txtMessage">Mesaj: </label> @Html.TextBox("txtMessage") <button id="btnSendMessage">Mesaj Yolla</button>
+    </div>
+    <div id="messages"></div>
+</body>
+</html>
