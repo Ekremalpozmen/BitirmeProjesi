@@ -26,6 +26,30 @@
           <Property Name="RecurrenceDate" Type="datetime" />
           <Property Name="AnimalId" Type="bigint" />
         </EntityType>
+        <EntityType Name="FromUserToVetMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentMessage" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="FromUserId" Type="bigint" />
+          <Property Name="ToVetId" Type="bigint" />
+          <Property Name="QuestionsId" Type="bigint" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="FromVetToUserMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentMessage" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="FromVetId" Type="bigint" />
+          <Property Name="ToUserId" Type="bigint" />
+          <Property Name="QuestionsId" Type="bigint" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
         <EntityType Name="Messages">
           <Key>
             <PropertyRef Name="Id" />
@@ -100,6 +124,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FromUserToVetMessages_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+          <End Role="FromUserToVetMessages" Type="Self.FromUserToVetMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FromUserToVetMessages">
+              <PropertyRef Name="QuestionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Questions_User">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
@@ -127,6 +163,8 @@
         <EntityContainer Name="BitirmeProjesiModelStoreContainer">
           <EntitySet Name="Animals" EntityType="Self.Animals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnimalsVaccinations" EntityType="Self.AnimalsVaccinations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FromUserToVetMessages" EntityType="Self.FromUserToVetMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FromVetToUserMessages" EntityType="Self.FromVetToUserMessages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -135,6 +173,10 @@
           <AssociationSet Name="FK_AnimalsVaccinations_Animals" Association="Self.FK_AnimalsVaccinations_Animals">
             <End Role="Animals" EntitySet="Animals" />
             <End Role="AnimalsVaccinations" EntitySet="AnimalsVaccinations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FromUserToVetMessages_Questions" Association="Self.FK_FromUserToVetMessages_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="FromUserToVetMessages" EntitySet="FromUserToVetMessages" />
           </AssociationSet>
           <AssociationSet Name="FK_Questions_User" Association="Self.FK_Questions_User">
             <End Role="Users" EntitySet="Users" />
@@ -168,6 +210,12 @@
           <AssociationSet Name="FK_Questions_VetUser" Association="BitirmeProjesiModel.FK_Questions_VetUser">
             <End Role="VetUsers" EntitySet="VetUsers" />
             <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <EntitySet Name="FromUserToVetMessages" EntityType="BitirmeProjesiModel.FromUserToVetMessages" />
+          <EntitySet Name="FromVetToUserMessages" EntityType="BitirmeProjesiModel.FromVetToUserMessages" />
+          <AssociationSet Name="FK_FromUserToVetMessages_Questions" Association="BitirmeProjesiModel.FK_FromUserToVetMessages_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="FromUserToVetMessages" EntitySet="FromUserToVetMessages" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Animals">
@@ -217,6 +265,7 @@
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Users" Relationship="BitirmeProjesiModel.FK_Questions_User" FromRole="Questions" ToRole="Users" />
           <NavigationProperty Name="VetUsers" Relationship="BitirmeProjesiModel.FK_Questions_VetUser" FromRole="Questions" ToRole="VetUsers" />
+          <NavigationProperty Name="FromUserToVetMessages" Relationship="BitirmeProjesiModel.FK_FromUserToVetMessages_Questions" FromRole="Questions" ToRole="FromUserToVetMessages" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -292,6 +341,43 @@
             </Principal>
             <Dependent Role="Questions">
               <PropertyRef Name="VetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FromUserToVetMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="FromUserId" Type="Int64" />
+          <Property Name="ToVetId" Type="Int64" />
+          <Property Name="QuestionsId" Type="Int64" />
+          <NavigationProperty Name="Questions" Relationship="BitirmeProjesiModel.FK_FromUserToVetMessages_Questions" FromRole="FromUserToVetMessages" ToRole="Questions" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FromVetToUserMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="FromVetId" Type="Int64" />
+          <Property Name="ToUserId" Type="Int64" />
+          <Property Name="QuestionsId" Type="Int64" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_FromUserToVetMessages_Questions">
+          <End Type="BitirmeProjesiModel.Questions" Role="Questions" Multiplicity="0..1" />
+          <End Type="BitirmeProjesiModel.FromUserToVetMessages" Role="FromUserToVetMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FromUserToVetMessages">
+              <PropertyRef Name="QuestionsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -387,6 +473,32 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SurName" ColumnName="SurName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FromUserToVetMessages">
+            <EntityTypeMapping TypeName="BitirmeProjesiModel.FromUserToVetMessages">
+              <MappingFragment StoreEntitySet="FromUserToVetMessages">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
+                <ScalarProperty Name="ToVetId" ColumnName="ToVetId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ContentMessage" ColumnName="ContentMessage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FromVetToUserMessages">
+            <EntityTypeMapping TypeName="BitirmeProjesiModel.FromVetToUserMessages">
+              <MappingFragment StoreEntitySet="FromVetToUserMessages">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromVetId" ColumnName="FromVetId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ContentMessage" ColumnName="ContentMessage" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

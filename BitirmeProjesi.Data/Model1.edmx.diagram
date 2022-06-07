@@ -15,6 +15,9 @@
         <AssociationConnector Association="BitirmeProjesiModel.FK_Questions_User" />
         <EntityTypeShape EntityType="BitirmeProjesiModel.VetUsers" Width="1.5" PointX="0.75" PointY="0.875" />
         <AssociationConnector Association="BitirmeProjesiModel.FK_Questions_VetUser" />
+        <EntityTypeShape EntityType="BitirmeProjesiModel.FromUserToVetMessages" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="BitirmeProjesiModel.FromVetToUserMessages" Width="1.5" PointX="7.375" PointY="7.75" />
+        <AssociationConnector Association="BitirmeProjesiModel.FK_FromUserToVetMessages_Questions" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

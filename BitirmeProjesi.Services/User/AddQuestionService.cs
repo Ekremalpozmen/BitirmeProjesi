@@ -32,7 +32,7 @@ namespace BitirmeProjesi.Services.User
         }
 
 
-        public ServiceCallResult AddQuestion(QuestionViewModel model)
+        public async Task<ServiceCallResult> AddQuestion(QuestionViewModel model, UserModel user)
         {
             var callResult = new ServiceCallResult() { Success = false };
 
@@ -41,18 +41,29 @@ namespace BitirmeProjesi.Services.User
                 Title = model.Title,
                 Description = model.Description,
                 RatingScore = 0,
-                UserId = 1,
+                UserId = user.Id,
                 VetId = model.VetId,
                 CreateDate = DateTime.Now,
             };
-
             _context.Questions.Add(question);
+
+            var messages = new FromUserToVetMessages()
+            {
+                ContentMessage = model.Title,
+                CreateDate = DateTime.Now,
+                FromUserId = user.Id,
+                ToVetId = model.VetId,
+                QuestionsId = question.Id,
+                Status = 1
+            };
+            _context.FromUserToVetMessages.Add(messages);
+
 
             using (var dbtransaction = _context.Database.BeginTransaction())
             {
                 try
                 {
-                    _context.SaveChangesAsync().ConfigureAwait(false);
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
                     dbtransaction.Commit();
                     callResult.Success = true;
                     callResult.SuccessMessages.Add("Soru başarıyla eklendi.");

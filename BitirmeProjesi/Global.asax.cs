@@ -26,6 +26,7 @@ namespace BitirmeProjesi
             container.Register(typeof(BitirmeProjesi.Services.User.AnimalsService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.VetService), new PerRequestLifeTime());
             container.Register(typeof(BitirmeProjesi.Services.User.ProfileService), new PerRequestLifeTime());
+            container.Register(typeof(BitirmeProjesi.Services.User.MessageService), new PerRequestLifeTime());
 
 
             //VET

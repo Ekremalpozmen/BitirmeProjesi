@@ -32,5 +32,7 @@ namespace BitirmeProjesi.Data
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<VetUsers> VetUsers { get; set; }
+        public virtual DbSet<FromUserToVetMessages> FromUserToVetMessages { get; set; }
+        public virtual DbSet<FromVetToUserMessages> FromVetToUserMessages { get; set; }
     }
 }

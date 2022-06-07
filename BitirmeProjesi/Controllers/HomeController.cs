@@ -26,9 +26,9 @@ namespace BitirmeProjesi.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddQuestion(QuestionViewModel model)
+        public async Task<ActionResult> AddQuestion(QuestionViewModel model)
         {
-            var result = _addQuestionService.AddQuestion(model);
+            var result =await _addQuestionService.AddQuestion(model,CurrentUser);
             TempData["Message"] = "Soru Başarılı Şekilde Gönderildi";
             return RedirectToAction("Index");
         }

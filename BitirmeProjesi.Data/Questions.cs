@@ -14,6 +14,12 @@ namespace BitirmeProjesi.Data
     
     public partial class Questions
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Questions()
+        {
+            this.FromUserToVetMessages = new HashSet<FromUserToVetMessages>();
+        }
+    
         public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -24,5 +30,7 @@ namespace BitirmeProjesi.Data
     
         public virtual Users Users { get; set; }
         public virtual VetUsers VetUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FromUserToVetMessages> FromUserToVetMessages { get; set; }
     }
 }

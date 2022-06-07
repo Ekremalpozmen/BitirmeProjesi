@@ -45,6 +45,7 @@
     <Compile Include="Common\CommonViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\AnimalsViewModel.cs" />
+    <Compile Include="User\MessageListViewModel.cs" />
     <Compile Include="User\QuestionViewModel.cs" />
     <Compile Include="User\Security\LoginViewModel.cs" />
     <Compile Include="User\Security\RegisterViewModel.cs" />
@@ -54,6 +55,11 @@
     <Compile Include="Vet\QuestionListViewModel.cs" />
     <Compile Include="Vet\VetModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BitirmeProjesi.Data\BitirmeProjesi.Data.csproj">
+      <Project>{D2BC82E9-A87B-4BE1-A0AB-F1B20335D5C7}</Project>
+      <Name>BitirmeProjesi.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
