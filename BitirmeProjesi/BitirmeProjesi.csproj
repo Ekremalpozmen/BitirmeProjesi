@@ -161,6 +161,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Vet\Controllers\Abstract\VetBaseController.cs" />
+    <Compile Include="Areas\Vet\Controllers\MessageController.cs" />
     <Compile Include="Areas\Vet\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Vet\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Vet\Controllers\SecurityController.cs" />
@@ -857,6 +858,7 @@
     <Content Include="Areas\Vet\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Vet\Views\Profile\_EditPassword.cshtml" />
     <Content Include="Areas\Vet\Views\Profile\_EditProfile.cshtml" />
+    <Content Include="Areas\Vet\Views\Message\_VetMessagesDetail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.ajax.form.js" />
     <Content Include="Scripts\custom.ajax.pager.js" />
