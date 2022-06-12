@@ -8,9 +8,9 @@ namespace BitirmeProjesi
 {
     public class ChatHub : Hub
     {
-        public void Send(string username, string message)
+        public void Send(string message)
         {
-            Clients.All.sendMessage(username, message);
+            Clients.All.sendMessage(message);
         }
     }
 }
