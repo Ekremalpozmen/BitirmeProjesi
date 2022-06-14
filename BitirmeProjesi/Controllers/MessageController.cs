@@ -23,11 +23,32 @@ namespace BitirmeProjesi.Controllers
         {
             List<FromUserToVetMessages> userToVetMessage = db.FromUserToVetMessages.Where(x => x.QuestionsId == questionId).ToList();
             ViewBag.fromUserToVetMessage = userToVetMessage;
+            ViewBag.userId = userToVetMessage.Select(x => x.FromUserId).FirstOrDefault();
+            ViewBag.vetId = userToVetMessage.Select(x => x.ToVetId).FirstOrDefault();
+            ViewBag.questionId = questionId;
 
             List<FromVetToUserMessages> vetToUserMessage = db.FromVetToUserMessages.Where(x => x.QuestionsId == questionId).ToList();
             ViewBag.fromVetToUserMessages = vetToUserMessage;
 
             return PartialView("~/Views/Message/_MessagesDetail.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult SendMessage(/*string contentMessage*/string contentMessage, int userId, int vetId, int questionId)
+        {
+            var message = new FromUserToVetMessages()
+            {
+                ContentMessage = contentMessage,
+                CreateDate = DateTime.Now,
+                FromUserId = userId,
+                ToVetId = vetId,
+                QuestionsId = questionId,
+                Status = 1
+            };
+
+            db.FromUserToVetMessages.Add(message);
+            db.SaveChanges();
+            return View();
         }
     }
 }

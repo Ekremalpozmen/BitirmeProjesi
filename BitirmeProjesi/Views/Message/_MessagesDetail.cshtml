@@ -1,4 +1,5 @@
-﻿
+﻿@model BitirmeProjesi.Data.FromUserToVetMessages
+
 
 <div>
     <div class="row row-cards">
@@ -36,10 +37,19 @@
                                 }
                             </div>
                         </div>
-                        <div class="main-chat-footer">
-                            <input id="txtMessage" class="form-control" placeholder="Mesajınızı Yazınız" type="text">
-                            <button id="btnSendMessage" type="button" class="btn btn-icon  btn-primary brround"><i class="fa fa-paper-plane-o"></i></button>
-                        </div>
+                        @using (Html.BeginForm("SendMessage", "Message", new { Area = String.Empty }, FormMethod.Post))
+                        {
+                            @Html.Hidden("userId", (object)ViewBag.userId)
+                            @Html.Hidden("vetId", (object)ViewBag.vetId)
+                            @Html.Hidden("questionId", (object)ViewBag.questionId)
+                            <form>
+                                <div class="main-chat-footer">
+                                    @*<input id="txtMessage" class="form-control" placeholder="Mesajınızı Yazınız" type="text">*@
+                                    @Html.TextBoxFor(m => m.ContentMessage, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
+                                    <button type="submit" id="btnSendMessage" class="btn btn-icon  btn-primary brround"><i class="fa fa-paper-plane-o"></i></button>
+                                </div>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -53,13 +63,22 @@
 <script src="~/assets/plugins/p-scroll/pscroll-1.js"></script>
 <script src="~/assets/js/chat.js"></script>
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
 <script src="~/SignalR/Hubs"></script>
 <script>
+    $("#btnSendMessage").click(function () {
+        var $message = $('.txtMessage');
+        var mesaj = $message.val();
+        $.ajax({
+            url: '/Message/SendMessage/',
+            type: 'POST',
+            data: JSON.stringify({ 'contentMessage': mesaj }),
+        });
+    });
+
     $(function () {
         var chat = $.connection.chatHub;
-        var $message = $('#txtMessage');
+        var $message = $('.txtMessage');
         var $messages = $('#userMessages');
         function dateConverter(d) {
             const monthList = [
@@ -76,8 +95,6 @@
                 "Nov",
                 "Dec"
             ];
-
-            /*Notice UTC methods are used to take care of 1st day of month and year*/
             const yr = d.getUTCFullYear();
             const mnt = monthList[d.getUTCMonth()];
             const day = d.getUTCDate() < 9 ? "0" + d.getUTCDate() : d.getUTCDate();
@@ -96,8 +113,9 @@
         $.connection.hub.start().done(function () {
             $('#btnSendMessage').click(function () {
                 chat.server.send($message.val());
-                $message.val('').focus();
+                //$message.val('').focus();
             });
         });
     });
+
 </script>
