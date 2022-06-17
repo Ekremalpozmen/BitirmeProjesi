@@ -64,7 +64,7 @@
 
 <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
 <script src="~/SignalR/Hubs"></script>
- 
+
 <script>
     $("#btnSendMessage").click(function () {
         var $message = $('.txtMessage');
@@ -109,6 +109,8 @@
         $message.focus();
         chat.client.sendMessage = function (message) {
             $messages.append('<div class="media flex-row-reverse chat-right">  <div class="media-body"><div id="messages" class="main-msg-wrapper chat-right"><span>' + message + '</span ></div><div><span>' + time + '</span ></div ></div ></div > ');
+            const modalBody = document.querySelector('#ChatBody');
+            modalBody.scrollTop = modalBody.scrollHeight
         };
         $.connection.hub.start().done(function () {
             $('#btnSendMessage').click(function () {

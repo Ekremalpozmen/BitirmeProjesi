@@ -1,10 +1,10 @@
 ﻿@model BitirmeProjesi.Data.FromUserToVetMessages
 
 
-<div>
+<div class="content">
     <div class="row row-cards">
         <div class="col-xl-12">
-            <div class=" col-lg-12" ">
+            <div class="col-lg-12">
                 <div class="main-content-app">
                     <div class="main-content-body main-content-body-chat h-100">
                         <div class="main-chat-body flex-2" id="ChatBody">
@@ -65,6 +65,7 @@
 
 <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
 <script src="~/SignalR/Hubs"></script>
+
 <script>
     $("#btnSendMessage").click(function () {
         var $message = $('.txtMessage');
@@ -109,6 +110,8 @@
         $message.focus();
         chat.client.sendMessage = function (message) {
             $messages.append('<div class="media flex-row-reverse chat-right">  <div class="media-body"><div id="messages" class="main-msg-wrapper chat-right"><span>' + message + '</span ></div><div><span>' + time + '</span ></div ></div ></div > ');
+            const modalBody = document.querySelector('#ChatBody');
+            modalBody.scrollTop = modalBody.scrollHeight
         };
         $.connection.hub.start().done(function () {
             $('#btnSendMessage').click(function () {
