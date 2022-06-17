@@ -25,7 +25,7 @@ namespace BitirmeProjesi.Services.User
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BitirmeProjesiConnectionString"].ConnectionString))
             {
                 string _sql = @"SELECT convert(decimal(8,2),round(Avg(q.RatingScore+0.0),2)) as RatingScore,v.Name,v.SurName as Surname ,v.Id FROM [BitirmeProjesi].[dbo].[Questions] q 
-                                INNER JOIN [BitirmeProjesi].[dbo].[VetUsers] v ON q.VetId=v.Id   GROUP BY	V.Id,v.Name,v.SurName";
+                                RIGHT JOIN [BitirmeProjesi].[dbo].[VetUsers] v ON q.VetId=v.Id   GROUP BY	V.Id,v.Name,v.SurName";
                 var vetList = (db.Query<VetListViewModel>(_sql)).ToList();
                 return vetList;
             }
