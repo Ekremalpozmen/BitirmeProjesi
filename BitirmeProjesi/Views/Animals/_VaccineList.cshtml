@@ -17,6 +17,7 @@
             <th>Aşı İsmi</th>
             <th>Yapılış Tarihi</th>
             <th>Tekrar Tarihi</th>
+            <th>İşlem</th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +27,28 @@
                 <td>@item.VaccineName</td>
                 <td>@item.VaccinationDate</td>
                 <td>@item.RecurrenceDate</td>
+                <td><button data-id="@item.Id" type="button" class="btn btn-secondary vaccineDelete">Sil</button></td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    $(".vaccineDelete").click(function () {
+        var vaccineId = $(this).attr("data-id");
+        var confirmDelete = confirm('Aşıyı silmek istediğinizden emin misiniz?');
+        if (confirmDelete) {
+            $.ajax({
+                 type: "POST",
+                 url: '@Url.Action("DeleteVaccine", "Animals")',
+                 data: JSON.stringify({ 'id': vaccineId }),
+                 contentType: 'application/json; charset=utf-8',
+                 success: function (result) {
+                    if (result.success) {
+                        alert("Aşı silindi");
+                    }
+                }
+            });
+        }
+    });
+</script>

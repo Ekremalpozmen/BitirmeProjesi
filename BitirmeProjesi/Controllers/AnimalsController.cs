@@ -63,7 +63,7 @@ namespace BitirmeProjesi.Controllers
         public async Task<ActionResult> AddVaccine(VaccineListViewModel model)
         {
             var callResult = await _animalsService.AddVaccineAsync(model, CurrentUser);
-            
+
             return Json(
                 new
                 {
@@ -72,5 +72,12 @@ namespace BitirmeProjesi.Controllers
                     responseText = RenderPartialViewToString("~/Views/Animals/_AddVaccine.cshtml", model)
                 });
         }
+
+        public async Task<ActionResult> DeleteVaccine(int id)
+        {
+            var callResult = await _animalsService.DeleteVaccine(id);
+            return View();
+        }
+
     }
 }

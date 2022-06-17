@@ -122,5 +122,29 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
+
+        public async Task<ServiceCallResult> DeleteVaccine(int id)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
+            var vaccine = _context.AnimalsVaccinations.FirstOrDefault(x => x.Id == id);
+            _context.AnimalsVaccinations.Remove(vaccine);
+            using (var dbTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbTransaction.Commit();
+                    callResult.Success = true;
+                    callResult.SuccessMessages.Add("Aşı Silinmiştir");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
+
     }
 }
