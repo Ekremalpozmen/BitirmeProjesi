@@ -15,7 +15,7 @@ namespace BitirmeProjesi.ViewModels.User
 
         public string FullName
         {
-            get { return Name + ", " + SurName; }
+            get { return Name +" "+ SurName; }
         }
         public bool Gender { get; set; }
         public string UserName { get; set; }

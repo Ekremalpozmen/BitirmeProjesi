@@ -26,13 +26,15 @@ namespace BitirmeProjesi.Services.Vet
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BitirmeProjesiConnectionString"].ConnectionString))
             {
-                string _sql = @" SELECT TOP (1000) q.Id
+                string _sql = @" 								SELECT  q.Id
                                  ,[Title]
                                  ,[UserId]
                                  ,[VetId]
-                              	 ,vu.Name as UserName
-                              	 ,vu.SurName as UserSurName
-                                 FROM [BitirmeProjesi].[dbo].[Questions] q INNER JOIN [dbo].VetUsers vu ON vu.Id=q.VetId where q.VetId=@userId";
+                              	 ,u.Name as UserName
+                              	 ,u.SurName as UserSurName
+                                 FROM [BitirmeProjesi].[dbo].[Questions] q 
+								 INNER JOIN [dbo].Users u ON u.Id=q.UserId where q.VetId=@userId
+								 ";
                 var questionList = (db.Query<QuestionListViewModel>(_sql, new { userId = user.Id })).ToList();
                 return questionList;
             }
