@@ -16,7 +16,7 @@
                                                 <span>@item.ContentMessage</span>
                                             </div>
                                             <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy hh:mm ")</span>
+                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
                                             </div>
                                         </div>
                                     </div>
@@ -29,7 +29,7 @@
                                                 <span>@item.ContentMessage</span>
                                             </div>
                                             <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy hh:mm ")</span>
+                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +43,6 @@
                             @Html.Hidden("questionId", (object)ViewBag.questionId)
                             <form>
                                 <div class="main-chat-footer">
-                                    @*<input id="txtMessage" class="form-control" placeholder="Mesajınızı Yazınız" type="text">*@
                                     @Html.TextBoxFor(m => m.ContentMessage, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
                                     <button type="submit" id="btnSendMessage" class="btn btn-icon  btn-primary brround"><i class="fa fa-paper-plane-o"></i></button>
                                 </div>

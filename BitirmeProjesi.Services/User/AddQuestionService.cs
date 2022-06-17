@@ -49,7 +49,7 @@ namespace BitirmeProjesi.Services.User
 
             var messages = new FromUserToVetMessages()
             {
-                ContentMessage = model.Title,
+                ContentMessage = model.Description,
                 CreateDate = DateTime.Now,
                 FromUserId = user.Id,
                 ToVetId = model.VetId,
