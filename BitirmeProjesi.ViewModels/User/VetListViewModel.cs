@@ -24,5 +24,7 @@ namespace BitirmeProjesi.ViewModels.User
         public string PhoneNumber { get; set; }
         public Nullable<System.DateTime> GraduationDate { get; set; }
         public string WorkShopName { get; set; }
+
+        public decimal RatingScore { get; set; }
     }
 }

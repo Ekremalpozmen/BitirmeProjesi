@@ -19,7 +19,7 @@ namespace BitirmeProjesi.Controllers
         }
         public async Task<ActionResult> Index()
         {
-            var model = await _vetService.GetVetListViewModel();
+            var model =   _vetService.GetVetListViewModel();
             return View(model);
         }
 
