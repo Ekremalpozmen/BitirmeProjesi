@@ -20,5 +20,6 @@ namespace BitirmeProjesi.Data
         public Nullable<long> FromUserId { get; set; }
         public Nullable<long> ToUserId { get; set; }
         public Nullable<long> QuestionsId { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

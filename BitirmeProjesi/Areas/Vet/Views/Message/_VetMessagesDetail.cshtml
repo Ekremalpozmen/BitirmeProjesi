@@ -1,4 +1,4 @@
-﻿@model BitirmeProjesi.Data.FromVetToUserMessages
+﻿@model List<BitirmeProjesi.Data.Messages>
 
 <div>
     <div class="row row-cards">
@@ -8,31 +8,34 @@
                     <div class="main-content-body main-content-body-chat h-100">
                         <div class="main-chat-body flex-2" id="ChatBody">
                             <div id="userMessages" class="content-inner">
-                                @foreach (var item in ViewBag.fromUserToVetMessages)
+                                @foreach (var item in Model)
                                 {
-                                    <div class="media chat-left">
-                                        <div class="media-body">
-                                            <div class="main-msg-wrapper">
-                                                <span>@item.ContentMessage</span>
-                                            </div>
-                                            <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
+                                    if (item.Status == 1)
+                                    {
+                                        <div class="media chat-left">
+                                            <div class="media-body">
+                                                <div class="main-msg-wrapper">
+                                                    <span>@item.ContentMessage</span>
+                                                </div>
+                                                <div>
+                                                    <span>@item.CreateDate.Value.ToString("dd-MMM-yyyy HH:mm")</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
-                                @foreach (var item in ViewBag.fromVetToUserMessages)
-                                {
-                                    <div class="media flex-row-reverse chat-right">
-                                        <div class="media-body">
-                                            <div id="messages" class="main-msg-wrapper">
-                                                <span>@item.ContentMessage</span>
-                                            </div>
-                                            <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="media flex-row-reverse chat-right">
+                                            <div class="media-body">
+                                                <div id="messages" class="main-msg-wrapper">
+                                                    <span>@item.ContentMessage</span>
+                                                </div>
+                                                <div>
+                                                    <span>@item.CreateDate.Value.ToString("dd-MMM-yyyy HH:mm")</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
                                 }
                             </div>
                         </div>
@@ -43,7 +46,7 @@
                             @Html.Hidden("questionId", (object)ViewBag.questionId)
                             <form>
                                 <div class="main-chat-footer">
-                                    @Html.TextBoxFor(m => m.ContentMessage, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
+                                    @Html.TextBox("contentMessage", null, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
                                     <button type="submit" id="btnSendMessage" class="btn btn-icon  btn-primary brround"><i class="fa fa-paper-plane-o"></i></button>
                                 </div>
                             </form>
@@ -107,7 +110,7 @@
         const time = dateConverter(new Date());
         $message.focus();
         chat.client.sendMessage = function (message) {
-            $messages.append('<div class="media flex-row-reverse chat-right">  <div class="media-body"><div id="messages" class="main-msg-wrapper chat-right"><span>' + message + '</span ></div><div><span>' + time + '</span ></div ></div ></div > ');
+            $messages.append('<div class="media flex-row-reverse chat-right">  <div class="media-body"><div id="messages" class="main-msg-wrapper"><span>' + message + '</span ></div><div><span>' + time + '</span ></div ></div ></div > ');
             const modalBody = document.querySelector('#ChatBody');
             modalBody.scrollTop = modalBody.scrollHeight
         };

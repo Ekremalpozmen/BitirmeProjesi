@@ -1,4 +1,4 @@
-﻿@model BitirmeProjesi.Data.FromUserToVetMessages
+﻿@model List<BitirmeProjesi.Data.Messages>
 
 
 <div class="content">
@@ -9,31 +9,34 @@
                     <div class="main-content-body main-content-body-chat h-100">
                         <div class="main-chat-body flex-2" id="ChatBody">
                             <div id="userMessages" class="content-inner">
-                                @foreach (var item in ViewBag.fromVetToUserMessages)
+                                @foreach (var item in Model)
                                 {
-                                    <div class="media chat-left">
-                                        <div class="media-body">
-                                            <div class="main-msg-wrapper">
-                                                <span>@item.ContentMessage</span>
-                                            </div>
-                                            <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
+                                    if (item.Status == 2)
+                                    {
+                                        <div class="media chat-left">
+                                            <div class="media-body">
+                                                <div class="main-msg-wrapper">
+                                                    <span>@item.ContentMessage</span>
+                                                </div>
+                                                <div>
+                                                    <span>@item.CreateDate.Value.ToString("dd-MMM-yyyy HH:mm")</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
-                                @foreach (var item in ViewBag.fromUserToVetMessage)
-                                {
-                                    <div class="media flex-row-reverse chat-right">
-                                        <div class="media-body">
-                                            <div id="messages" class="main-msg-wrapper">
-                                                <span>@item.ContentMessage</span>
-                                            </div>
-                                            <div>
-                                                <span>@item.CreateDate.ToString("dd-MMM-yyyy HH:mm")</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="media flex-row-reverse chat-right">
+                                            <div class="media-body">
+                                                <div id="messages" class="main-msg-wrapper">
+                                                    <span>@item.ContentMessage</span>
+                                                </div>
+                                                <div>
+                                                    <span>@item.CreateDate.Value.ToString("dd-MMM-yyyy HH:mm")</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
                                 }
                             </div>
                         </div>
@@ -44,8 +47,7 @@
                             @Html.Hidden("questionId", (object)ViewBag.questionId)
                             <form>
                                 <div class="main-chat-footer">
-                                    @*<input id="txtMessage" class="form-control" placeholder="Mesajınızı Yazınız" type="text">*@
-                                    @Html.TextBoxFor(m => m.ContentMessage, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
+                                    @Html.TextBox("contentMessage", null, new { @class = "form-control txtMessage", placeholder = "Mesajınızı Yazınız" })
                                     <button type="submit" id="btnSendMessage" class="btn btn-icon  btn-primary brround"><i class="fa fa-paper-plane-o"></i></button>
                                 </div>
                             </form>

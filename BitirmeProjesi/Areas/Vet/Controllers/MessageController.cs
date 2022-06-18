@@ -15,35 +15,28 @@ namespace BitirmeProjesi.Areas.Vet.Controllers
 
         public ActionResult VetMessagesDetail(int questionId)
         {
-            List<FromUserToVetMessages> userToVetMessage = db.FromUserToVetMessages.Where(x => x.QuestionsId == questionId).ToList();
-            ViewBag.fromUserToVetMessages = userToVetMessage;
-
-            ViewBag.userId = userToVetMessage.Select(x => x.FromUserId).FirstOrDefault();
-            ViewBag.vetId = userToVetMessage.Select(x => x.ToVetId).FirstOrDefault();
+            var model = db.Messages.Where(x => x.QuestionsId == questionId).ToList();
+            ViewBag.userId = model.Select(x => x.FromUserId).FirstOrDefault();
+            ViewBag.vetId = model.Select(x => x.ToUserId).FirstOrDefault();
             ViewBag.questionId = questionId;
 
-
-
-            List<FromVetToUserMessages> vetToUserMessage = db.FromVetToUserMessages.Where(x => x.QuestionsId == questionId).ToList();
-            ViewBag.fromVetToUserMessages = vetToUserMessage;
-
-            return PartialView("~/Areas/Vet/Views/Message/_VetMessagesDetail.cshtml");
+            return PartialView("~/Areas/Vet/Views/Message/_VetMessagesDetail.cshtml", model);
         }
 
         [HttpPost]
         public ActionResult VetSendMessage(string contentMessage, int userId, int vetId, int questionId)
         {
-            var message = new FromVetToUserMessages()
+
+            var message = new Messages()
             {
                 ContentMessage = contentMessage,
-                CreateDate = DateTime.Now,
-                FromVetId = vetId,
+                FromUserId = vetId,
                 ToUserId = userId,
                 QuestionsId = questionId,
+                CreateDate = DateTime.Now,
                 Status = 2
             };
-
-            db.FromVetToUserMessages.Add(message);
+            db.Messages.Add(message);
             db.SaveChanges();
             return View();
         }

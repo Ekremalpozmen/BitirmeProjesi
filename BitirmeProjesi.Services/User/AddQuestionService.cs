@@ -47,16 +47,23 @@ namespace BitirmeProjesi.Services.User
             };
             _context.Questions.Add(question);
 
-            var messages = new FromUserToVetMessages()
+
+            using (var dbtransaction = _context.Database.BeginTransaction())
+            {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbtransaction.Commit();
+            };
+
+            var messages = new Messages()
             {
                 ContentMessage = model.Description,
                 CreateDate = DateTime.Now,
                 FromUserId = user.Id,
-                ToVetId = model.VetId,
+                ToUserId = model.VetId,
                 QuestionsId = question.Id,
                 Status = 1
             };
-            _context.FromUserToVetMessages.Add(messages);
+            _context.Messages.Add(messages);
 
 
             using (var dbtransaction = _context.Database.BeginTransaction())

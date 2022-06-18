@@ -60,6 +60,7 @@
           <Property Name="FromUserId" Type="bigint" />
           <Property Name="ToUserId" Type="bigint" />
           <Property Name="QuestionsId" Type="bigint" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -251,6 +252,7 @@
           <Property Name="FromUserId" Type="Int64" />
           <Property Name="ToUserId" Type="Int64" />
           <Property Name="QuestionsId" Type="Int64" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -413,6 +415,7 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="BitirmeProjesiModel.Messages">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="QuestionsId" ColumnName="QuestionsId" />
                 <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
                 <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />

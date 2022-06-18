@@ -19,34 +19,29 @@ namespace BitirmeProjesi.Controllers
         {
             _messageService = messageService;
         }
-        public async Task<ActionResult> MessagesDetail(int questionId)
+        public ActionResult MessagesDetail(int questionId)
         {
-            List<FromUserToVetMessages> userToVetMessage = db.FromUserToVetMessages.Where(x => x.QuestionsId == questionId).ToList();
-            ViewBag.fromUserToVetMessage = userToVetMessage;
-            ViewBag.userId = userToVetMessage.Select(x => x.FromUserId).FirstOrDefault();
-            ViewBag.vetId = userToVetMessage.Select(x => x.ToVetId).FirstOrDefault();
+            var model = db.Messages.Where(x => x.QuestionsId == questionId).ToList();
+            ViewBag.userId = model.Select(x => x.FromUserId).FirstOrDefault();
+            ViewBag.vetId = model.Select(x => x.ToUserId).FirstOrDefault();
             ViewBag.questionId = questionId;
 
-            List<FromVetToUserMessages> vetToUserMessage = db.FromVetToUserMessages.Where(x => x.QuestionsId == questionId).ToList();
-            ViewBag.fromVetToUserMessages = vetToUserMessage;
-
-            return PartialView("~/Views/Message/_MessagesDetail.cshtml");
+            return PartialView("~/Views/Message/_MessagesDetail.cshtml", model);
         }
 
         [HttpPost]
-        public ActionResult SendMessage(/*string contentMessage*/string contentMessage, int userId, int vetId, int questionId)
+        public ActionResult SendMessage(string contentMessage, int userId, int vetId, int questionId)
         {
-            var message = new FromUserToVetMessages()
+            var message = new Messages()
             {
                 ContentMessage = contentMessage,
-                CreateDate = DateTime.Now,
                 FromUserId = userId,
-                ToVetId = vetId,
+                ToUserId = vetId,
                 QuestionsId = questionId,
+                CreateDate = DateTime.Now,
                 Status = 1
             };
-
-            db.FromUserToVetMessages.Add(message);
+            db.Messages.Add(message);
             db.SaveChanges();
             return View();
         }
