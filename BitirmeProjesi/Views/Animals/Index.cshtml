@@ -32,7 +32,7 @@
                                 <th>Cinsi</th>
                                 <th>Doğum Tarihi</th>
                                 <th>Cinsiyeti</th>
-                                <th>Aşı Bilgileri</th>
+                                <th style="text-align: center">İşlem</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,16 +58,16 @@
                                             <span>Dişi</span>
                                         }
                                     </td>
-                                    <td>
+                                    <td style="text-align: center">
                                         <a data-modal-form="true"
                                            data-modal-size="modal-lg"
                                            data-modal-title="Son Aşılar"
                                            data-id="@item.Id"
-                                             class="btn btn-secondary mt-2 "
+                                           class="btn btn-secondary mt-2 "
                                            href="@Url.Action("VaccineList", "Animals", routeValues: new {Area = string.Empty, animalId = item.Id})">
-                                    
                                             Detay
                                         </a>
+                                        <button data-id="@item.Id" type="button" class="btn btn-secondary mt-2 animalDelete" vaccineDelete">Sil</button>
                                     </td>
                                 </tr>
                             }
@@ -80,5 +80,22 @@
 </div>
 
 
-
-
+<script>
+    $(".animalDelete").click(function () {
+        var animalId = $(this).attr("data-id");
+        var confirmDelete = confirm('Hayvanı silmek istediğinizden emin misiniz? Aşılar ile beraber silinecek!!!');
+        if (confirmDelete) {
+            $.ajax({
+                 type: "POST",
+                 url: '@Url.Action("DeleteAnimal", "Animals")',
+                data: JSON.stringify({ 'id': animalId }),
+                 contentType: 'application/json; charset=utf-8',
+                 success: function (result) {
+                    if (result.success) {
+                        alert("Hayvan silindi");
+                    }
+                }
+            });
+        }
+    });
+</script>

@@ -79,5 +79,11 @@ namespace BitirmeProjesi.Controllers
             return View();
         }
 
+        public async Task<ActionResult> DeleteAnimal(int id)
+        {
+            var callResult = await _animalsService.DeleteAnimal(id);
+            return View();
+        }
+
     }
 }

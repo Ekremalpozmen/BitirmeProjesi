@@ -38,7 +38,6 @@ namespace BitirmeProjesi.Services.User
                 return animalsList;
             }
         }
-
         public async Task<ServiceCallResult> AddAnimalsAsync(AnimalsViewModel model, UserModel user)
         {
             var callResult = new ServiceCallResult() { Success = false };
@@ -72,7 +71,6 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
-
         public async Task<List<VaccineListViewModel>> GetVaccineListViewModel(int animalId)
         {
             var vaccineList = await (from b in _context.AnimalsVaccinations.AsExpandable()
@@ -89,7 +87,6 @@ namespace BitirmeProjesi.Services.User
                                      }).ToListAsync();
             return vaccineList;
         }
-
         public async Task<ServiceCallResult> AddVaccineAsync(VaccineListViewModel model, UserModel user)
         {
             var callResult = new ServiceCallResult() { Success = false };
@@ -122,7 +119,6 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
-
         public async Task<ServiceCallResult> DeleteVaccine(int id)
         {
             var callResult = new ServiceCallResult() { Success = false };
@@ -145,6 +141,29 @@ namespace BitirmeProjesi.Services.User
                 }
             }
         }
-
+        public async Task<ServiceCallResult> DeleteAnimal(int id)
+        {
+            var callResult = new ServiceCallResult() { Success = false };
+            var animalsVaccinations = _context.AnimalsVaccinations.Where(x => x.AnimalId == id).ToList();
+            _context.AnimalsVaccinations.RemoveRange(animalsVaccinations);
+            var animal = _context.Animals.FirstOrDefault(x => x.Id == id);
+            _context.Animals.Remove(animal);
+            using (var dbTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    dbTransaction.Commit();
+                    callResult.Success = true;
+                    callResult.SuccessMessages.Add("Hayvan Silinmiştir");
+                    return callResult;
+                }
+                catch (Exception exc)
+                {
+                    callResult.ErrorMessages.Add(exc.GetBaseException().Message);
+                    return callResult;
+                }
+            }
+        }
     }
 }
