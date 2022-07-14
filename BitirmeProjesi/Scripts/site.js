@@ -231,11 +231,7 @@ $(function () {
             /*aborted or navigated to other url, before completing ajax call (mostly), ERR_CONNECTION_REFUSED so ignore and exit*/
             return;
         }
-        if ((jqXhr.status === 401 || jqXhr.status === 403) && jqXhr.getResponseHeader('PRAPAZAR-NO-SUBSCRIPTION')) {
-            /*Ok customer has no valid subscription, redirect to subscription page*/
-            toastr.error(decodeURIComponent(jqXhr.getResponseHeader('PRAPAZAR-NO-SUBSCRIPTION')));
-            return;
-        }
+        
         if ((jqXhr.status === 401 || jqXhr.status === 403 || jqXhr.status === 420) && jqXhr.responseText && jqXhr.responseText !== '') {
             toastr.error(jqXhr.responseText, jqXhr.status);
         } else if (jqXhr.status === 500) {
